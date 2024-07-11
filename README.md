@@ -1,1 +1,1 @@
-# Anime-E-Commerce .
+# Anime-E-Commerce
