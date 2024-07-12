@@ -42,26 +42,6 @@ async function seedData() {
           email: faker.internet.email(),
           password: faker.internet.password(),
           admin: false,
-          cart: [
-            { productId: 1, quantity: 1 },
-            { productId: 6, quantity: 1 },
-          ],
-          orderHistory: [
-            {
-              orderId: 1,
-              userId: 1,
-              order: [
-                { productId: 1, quantity: 1 },
-                { productId: 3, quantity: 1 },
-                { productId: 6, quantity: 1 },
-              ],
-            },
-            {
-              orderId: 2,
-              userId: 1,
-              order: [{ productId: 8, quantity: 1 }],
-            },
-          ],
         },
         {
           // user with no items in cart but with order history
@@ -70,17 +50,6 @@ async function seedData() {
           email: faker.internet.email(),
           password: faker.internet.password(),
           admin: false,
-          cart: [],
-          orderHistory: [
-            {
-              orderId: 1,
-              userId: 2,
-              order: [
-                { productId: 15, quantity: 1 },
-                { productId: 10, quantity: 1 },
-              ],
-            },
-          ],
         },
         {
           // user with items in cart but with no order history
@@ -89,11 +58,43 @@ async function seedData() {
           email: faker.internet.email(),
           password: faker.internet.password(),
           admin: false,
-          cart: [
-            { productId: 9, quantity: 1 },
-            { productId: 14, quantity: 3 },
-          ],
-          orderHistory: [],
+        },
+      ],
+    });
+
+    // Create the cart and order history entries
+    await prisma.cart.createMany({
+      data: [
+        { userId: 1, productId: 1, quantity: 1 },
+        { userId: 1, productId: 6, quantity: 1 },
+        { userId: 3, productId: 9, quantity: 1 },
+        { userId: 3, productId: 14, quantity: 3 },
+      ],
+    });
+
+    await prisma.orderHistory.createMany({
+      data: [
+        {
+          orderId: 1,
+          userId: 1,
+          order: JSON.stringify([
+            { productId: 1, quantity: 1 },
+            { productId: 3, quantity: 1 },
+            { productId: 6, quantity: 1 },
+          ]),
+        },
+        {
+          orderId: 2,
+          userId: 1,
+          order: JSON.stringify([{ productId: 8, quantity: 1 }]),
+        },
+        {
+          orderId: 1,
+          userId: 2,
+          order: JSON.stringify([
+            { productId: 15, quantity: 1 },
+            { productId: 10, quantity: 1 },
+          ]),
         },
       ],
     });
@@ -297,7 +298,7 @@ async function seedData() {
     });
     console.log("Database is seeded.");
   } catch (error) {
-    console.error(err);
+    console.error(error);
   }
 }
 
@@ -307,3 +308,9 @@ if (require.main === module) {
 }
 
 module.exports = seedData;
+
+function multiplyNumbers(banna, water, onions) {
+  banna * water * onions;
+}
+
+console.log(multiplyNumbers(1, 4, 5));
