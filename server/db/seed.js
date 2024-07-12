@@ -33,7 +33,7 @@ async function seedData() {
 
     // Create 3 regular users
     // Do I create the carts and orderHistory here?
-    const users = await prisma.use.createMany({
+    const users = await prisma.user.createMany({
       data: [
         {
           // user with items in cart and order history
@@ -99,7 +99,7 @@ async function seedData() {
     });
     // create Products
     // Categories: Clothing, Collectables (figures), Home Entertainment (DVD, CDs etc), Manga & Books
-    const products = await prisma.user.createMany({
+    const products = await prisma.product.createMany({
       data: [
         // Clothing
         {
@@ -295,5 +295,15 @@ async function seedData() {
         },
       ],
     });
-  } catch (error) {}
+    console.log("Database is seeded.");
+  } catch (error) {
+    console.error(err);
+  }
 }
+
+// Seed the database if we are running this file directly.
+if (require.main === module) {
+  seedData();
+}
+
+module.exports = seedData;
