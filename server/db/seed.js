@@ -36,12 +36,64 @@ async function seedData() {
     const users = await prisma.use.createMany({
       data: [
         {
+          // user with items in cart and order history
+          // userId: 1
           name: faker.person.fullName(),
           email: faker.internet.email(),
           password: faker.internet.password(),
           admin: false,
-          cart: [{}],
-          orderHistory: [{}],
+          cart: [
+            { productId: 1, quantity: 1 },
+            { productId: 6, quantity: 1 },
+          ],
+          orderHistory: [
+            {
+              orderId: 1,
+              userId: 1,
+              order: [
+                { productId: 1, quantity: 1 },
+                { productId: 3, quantity: 1 },
+                { productId: 6, quantity: 1 },
+              ],
+            },
+            {
+              orderId: 2,
+              userId: 1,
+              order: [{ productId: 8, quantity: 1 }],
+            },
+          ],
+        },
+        {
+          // user with no items in cart but with order history
+          // userId: 2
+          name: faker.person.fullName(),
+          email: faker.internet.email(),
+          password: faker.internet.password(),
+          admin: false,
+          cart: [],
+          orderHistory: [
+            {
+              orderId: 1,
+              userId: 2,
+              order: [
+                { productId: 15, quantity: 1 },
+                { productId: 10, quantity: 1 },
+              ],
+            },
+          ],
+        },
+        {
+          // user with items in cart but with no order history
+          // userId: 3
+          name: faker.person.fullName(),
+          email: faker.internet.email(),
+          password: faker.internet.password(),
+          admin: false,
+          cart: [
+            { productId: 9, quantity: 1 },
+            { productId: 14, quantity: 3 },
+          ],
+          orderHistory: [],
         },
       ],
     });
@@ -51,6 +103,7 @@ async function seedData() {
       data: [
         // Clothing
         {
+          // productId: 1
           name: "Naruto Shippuden - Kakashi Hatake '90s T-Shirt",
           description: faker.lorem.paragraph(),
           price: 24.95,
@@ -60,6 +113,7 @@ async function seedData() {
           stock: 10,
         },
         {
+          // productId: 2
           name: "Jujutsu Kaisen - Gojo Crossed Arms Hoodie",
           description: faker.lorem.paragraph(),
           price: 44.95,
@@ -69,6 +123,7 @@ async function seedData() {
           stock: 15,
         },
         {
+          // productId: 3
           name: "One Piece - Luffy Scattered Devil Fruit Short Sleeve T-Shirt",
           description: faker.lorem.paragraph(),
           price: 29.95,
@@ -78,6 +133,7 @@ async function seedData() {
           stock: 8,
         },
         {
+          // productId: 4
           name: "Attack On Titan - Colossal Titan T-Shirt",
           description: faker.lorem.paragraph(),
           price: 19.95,
@@ -87,6 +143,7 @@ async function seedData() {
           stock: 20,
         },
         {
+          // productId: 5
           name: "Dragon Ball Z - Z Fighters Sweatpants",
           description: faker.lorem.paragraph(),
           price: 69.95,
@@ -133,6 +190,7 @@ async function seedData() {
           stock: 10,
         },
         {
+          // productId: 10
           name: "Fullmetal Alchemist: Brotherhood - Alphonse Elric FigZero 1/6 Scale Figure",
           description: faker.lorem.paragraph(),
           price: 189.95,
@@ -179,6 +237,7 @@ async function seedData() {
           stock: 5,
         },
         {
+          // productId: 15
           name: "My Neighbor Totoro Steelbook Blu-ray/DVD",
           description: faker.lorem.paragraph(),
           price: 24.95,
@@ -225,6 +284,7 @@ async function seedData() {
           stock: 10,
         },
         {
+          // productId: 20
           name: "Naruto Manga Box Set 1",
           description: faker.lorem.paragraph(),
           price: 229.95,
