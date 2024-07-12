@@ -6,6 +6,7 @@ app.use(express.json());
 // add cors
 const cors = require("cors");
 app.use(cors);
+
 // add more routes here?
 // iniialize server
 app.listen(PORT, () => {
