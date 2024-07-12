@@ -21,7 +21,7 @@ model User {
   admin        Boolean        @default(false)
   createdAt    DateTime       @default(now())
   updatedAt    DateTime       @updatedAt
-  cart         Cart?
+  cart         Cart[]
   orderHistory OrderHistory[]
 }
 
