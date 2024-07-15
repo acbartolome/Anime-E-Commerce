@@ -3,6 +3,9 @@ const { faker } = require("@faker-js/faker");
 
 const prisma = new PrismaClient();
 
+// stack overflow link: https://stackoverflow.com/questions/73800232/how-to-reset-the-auto-incremented-id-column-to-1-whenever-i-seed-the-database-in
+// how to implement truncate table?
+// reset table once and only seed once?
 async function seedData() {
   console.log("Seeding the database");
   try {
