@@ -7,10 +7,10 @@ async function seedData() {
   console.log("Seeding the database");
   try {
     // clear tables
-    await prisma.user.deleteMany({});
-    await prisma.product.deleteMany({});
     await prisma.cart.deleteMany({});
     await prisma.orderHistory.deleteMany({});
+    await prisma.product.deleteMany({});
+    await prisma.user.deleteMany({});
 
     // create admin accounts
     // Do I need to add a orderHistory?/cart?
@@ -33,27 +33,22 @@ async function seedData() {
 
     // Create 3 regular users
     // Do I create the carts and orderHistory here?
-    const users = await prisma.user.createMany({
+    // Create 3 regular users
+    const createdUsers = await prisma.user.createMany({
       data: [
         {
-          // user with items in cart and order history
-          // userId: 1
           name: faker.person.fullName(),
           email: faker.internet.email(),
           password: faker.internet.password(),
           admin: false,
         },
         {
-          // user with no items in cart but with order history
-          // userId: 2
           name: faker.person.fullName(),
           email: faker.internet.email(),
           password: faker.internet.password(),
           admin: false,
         },
         {
-          // user with items in cart but with no order history
-          // userId: 3
           name: faker.person.fullName(),
           email: faker.internet.email(),
           password: faker.internet.password(),
@@ -62,38 +57,55 @@ async function seedData() {
       ],
     });
 
-    // Create the cart and order history entries
+    // Fetch the created users to get their IDs
+    const users = await prisma.user.findMany();
+
+    // Create the cart entries
     await prisma.cart.createMany({
       data: [
-        { userId: 1, productId: 1, quantity: 1 },
-        { userId: 1, productId: 6, quantity: 1 },
-        { userId: 3, productId: 9, quantity: 1 },
-        { userId: 3, productId: 14, quantity: 3 },
-      ],
-    });
-
-    await prisma.orderHistory.createMany({
-      data: [
         {
-          orderId: 1,
-          userId: 1,
-          order: JSON.stringify([
+          userId: users[2].id,
+          items: JSON.stringify([
             { productId: 1, quantity: 1 },
-            { productId: 3, quantity: 1 },
             { productId: 6, quantity: 1 },
           ]),
         },
         {
-          orderId: 2,
-          userId: 1,
-          order: JSON.stringify([{ productId: 8, quantity: 1 }]),
+          userId: users[4].id,
+          items: JSON.stringify([
+            { productId: 9, quantity: 1 },
+            { productId: 14, quantity: 3 },
+          ]),
+        },
+      ],
+    });
+
+    // Create the order history entries
+    await prisma.orderHistory.createMany({
+      data: [
+        {
+          userId: users[2].id,
+          history: JSON.stringify([
+            {
+              orderId: 1,
+              order: [
+                { productId: 1, quantity: 1 },
+                { productId: 3, quantity: 1 },
+                { productId: 6, quantity: 1 },
+              ],
+            },
+          ]),
         },
         {
-          orderId: 1,
-          userId: 2,
-          order: JSON.stringify([
-            { productId: 15, quantity: 1 },
-            { productId: 10, quantity: 1 },
+          userId: users[3].id,
+          history: JSON.stringify([
+            {
+              orderId: 2,
+              order: [
+                { productId: 15, quantity: 1 },
+                { productId: 10, quantity: 1 },
+              ],
+            },
           ]),
         },
       ],
