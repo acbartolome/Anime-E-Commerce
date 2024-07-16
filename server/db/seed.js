@@ -3,17 +3,23 @@ const { faker } = require("@faker-js/faker");
 
 const prisma = new PrismaClient();
 
-// stack overflow link: https://stackoverflow.com/questions/73800232/how-to-reset-the-auto-incremented-id-column-to-1-whenever-i-seed-the-database-in
-// how to implement truncate table?
-// reset table once and only seed once?
+// create function to reset ID each time
+async function resetDatabase() {
+  await prisma.$executeRaw`BEGIN`;
+  await prisma.$executeRaw`TRUNCATE TABLE "Product" RESTART IDENTITY CASCADE`;
+  await prisma.$executeRaw`TRUNCATE TABLE "Cart" RESTART IDENTITY CASCADE`;
+  await prisma.$executeRaw`TRUNCATE TABLE "OrderHistory" RESTART IDENTITY CASCADE`;
+  await prisma.$executeRaw`TRUNCATE TABLE "User" RESTART IDENTITY CASCADE`;
+  await prisma.$executeRaw`COMMIT`;
+}
+
+// seed database
 async function seedData() {
   console.log("Seeding the database");
   try {
     // clear tables
-    await prisma.cart.deleteMany({});
-    await prisma.orderHistory.deleteMany({});
-    await prisma.product.deleteMany({});
-    await prisma.user.deleteMany({});
+    // add the resetDatabase function
+    await resetDatabase();
 
     // create admin accounts
     // Do I need to add a orderHistory?/cart?
@@ -36,7 +42,6 @@ async function seedData() {
 
     // Create 3 regular users
     // Do I create the carts and orderHistory here?
-    // Create 3 regular users
     const createdUsers = await prisma.user.createMany({
       data: [
         {
@@ -113,6 +118,7 @@ async function seedData() {
         },
       ],
     });
+
     // create Products
     // Categories: Clothing, Collectables (figures), Home Entertainment (DVD, CDs etc), Manga & Books
     const products = await prisma.product.createMany({
@@ -323,9 +329,3 @@ if (require.main === module) {
 }
 
 module.exports = seedData;
-
-function multiplyNumbers(banna, water, onions) {
-  banna * water * onions;
-}
-
-console.log(multiplyNumbers(1, 4, 5));
