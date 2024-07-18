@@ -73,17 +73,17 @@ async function seedData() {
       data: [
         {
           userId: users[2].id,
-          items: JSON.stringify([
+          items: [
             { productId: 1, quantity: 1 },
             { productId: 6, quantity: 1 },
-          ]),
+          ],
         },
         {
           userId: users[4].id,
-          items: JSON.stringify([
+          items: [
             { productId: 9, quantity: 1 },
             { productId: 14, quantity: 3 },
-          ]),
+          ],
         },
       ],
     });
@@ -93,7 +93,7 @@ async function seedData() {
       data: [
         {
           userId: users[2].id,
-          history: JSON.stringify([
+          history: [
             {
               orderId: 1,
               order: [
@@ -102,11 +102,11 @@ async function seedData() {
                 { productId: 6, quantity: 1 },
               ],
             },
-          ]),
+          ],
         },
         {
           userId: users[3].id,
-          history: JSON.stringify([
+          history: [
             {
               orderId: 2,
               order: [
@@ -114,7 +114,7 @@ async function seedData() {
                 { productId: 10, quantity: 1 },
               ],
             },
-          ]),
+          ],
         },
       ],
     });
