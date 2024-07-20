@@ -5,7 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import NavBar from "./components/NavBar";
 
 // Routes need
-// Home, Shop all, clothing, collectables, home entertainment, manga and books, login, logout, account, single item, cart, Add product,
+// Landing Page (Home), Shop all, clothing, collectables, home entertainment, manga and books, login, logout, account, single item, cart, Admin Page
 
 function App() {
   return (

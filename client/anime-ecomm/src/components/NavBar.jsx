@@ -8,10 +8,10 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 
 const NavBar = () => {
   return (
-    <div>
+    <>
       <Navbar expand="lg" className="bg-body-tertiary">
         <Container fluid>
-          <Navbar.Brand href="#">Navbar scroll</Navbar.Brand>
+          <Navbar.Brand href="#">(WEBSITE NAME GOES HERE)</Navbar.Brand>
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
             <Nav
@@ -20,20 +20,27 @@ const NavBar = () => {
               navbarScroll
             >
               <Nav.Link href="#action1">Home</Nav.Link>
-              <Nav.Link href="#action2">Link</Nav.Link>
-              <NavDropdown title="Link" id="navbarScrollingDropdown">
-                <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
-                <NavDropdown.Item href="#action4">
-                  Another action
-                </NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item href="#action5">
-                  Something else here
-                </NavDropdown.Item>
-              </NavDropdown>
-              <Nav.Link href="#" disabled>
-                Link
-              </Nav.Link>
+              <Nav.Link href="#action1">Shop All</Nav.Link>
+              <Nav.Link href="#action2">Collectables</Nav.Link>
+              <Nav.Link href="#action3">Clothing</Nav.Link>
+              <Nav.Link href="#action4">Home Entertainment</Nav.Link>
+              <Nav.Link href="#action5">Manga & Books</Nav.Link>
+
+              {/* need to review this to check for if else for what options are viewable when not logged in and logged off */}
+              {/* if(!loggedIn) {
+                  <Nav.Link href="#action5">Login</Nav.Link>
+                } else {
+                  <NavDropdown title="" id="navbarScrollingDropdown">
+                    <NavDropdown.Item href="#action6">Action</NavDropdown.Item>
+                    <NavDropdown.Item href="#action7">
+                      Another action
+                    </NavDropdown.Item>
+                    <NavDropdown.Divider />
+                    <NavDropdown.Item href="#action8">
+                      Something else here
+                    </NavDropdown.Item>
+                  </NavDropdown>
+                } */}
             </Nav>
             <Form className="d-flex">
               <Form.Control
@@ -47,7 +54,7 @@ const NavBar = () => {
           </Navbar.Collapse>
         </Container>
       </Navbar>
-    </div>
+    </>
   );
 };
 
