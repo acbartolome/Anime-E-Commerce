@@ -7,6 +7,7 @@ import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 
 const NavBar = () => {
+  // can you see this edit?
   // this is used to test if it works
   const loggedIn = "something";
   return (
