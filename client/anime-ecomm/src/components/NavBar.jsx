@@ -7,6 +7,8 @@ import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 
 const NavBar = () => {
+  // this is used to test if it works
+  const loggedIn = "something";
   return (
     <>
       <Navbar expand="lg" className="bg-body-tertiary">
@@ -20,27 +22,27 @@ const NavBar = () => {
               navbarScroll
             >
               <Nav.Link href="#action1">Home</Nav.Link>
-              <Nav.Link href="#action1">Shop All</Nav.Link>
-              <Nav.Link href="#action2">Collectables</Nav.Link>
-              <Nav.Link href="#action3">Clothing</Nav.Link>
-              <Nav.Link href="#action4">Home Entertainment</Nav.Link>
-              <Nav.Link href="#action5">Manga & Books</Nav.Link>
+              <Nav.Link href="#action2">Shop All</Nav.Link>
+              <Nav.Link href="#action3">Collectables</Nav.Link>
+              <Nav.Link href="#action4">Clothing</Nav.Link>
+              <Nav.Link href="#action5">Home Entertainment</Nav.Link>
+              <Nav.Link href="#action6">Manga & Books</Nav.Link>
 
               {/* need to review this to check for if else for what options are viewable when not logged in and logged off */}
-              {/* if(!loggedIn) {
+              <div>
+                {!loggedIn ? (
                   <Nav.Link href="#action5">Login</Nav.Link>
-                } else {
-                  <NavDropdown title="" id="navbarScrollingDropdown">
-                    <NavDropdown.Item href="#action6">Action</NavDropdown.Item>
-                    <NavDropdown.Item href="#action7">
-                      Another action
-                    </NavDropdown.Item>
+                ) : (
+                  <NavDropdown title="User" id="navbarScrollingDropdown">
+                    <NavDropdown.Item href="#action6">Account</NavDropdown.Item>
+                    <NavDropdown.Item href="#action7">Cart</NavDropdown.Item>
                     <NavDropdown.Divider />
                     <NavDropdown.Item href="#action8">
-                      Something else here
+                      Admin Page
                     </NavDropdown.Item>
                   </NavDropdown>
-                } */}
+                )}
+              </div>
             </Nav>
             <Form className="d-flex">
               <Form.Control
