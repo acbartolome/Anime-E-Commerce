@@ -7,6 +7,10 @@ app.use(express.json());
 const cors = require("cors");
 app.use(cors);
 
+app.use("/server/user");
+app.use("/server/admin");
+app.use("/server/product");
+
 // add more routes here?
 // iniialize server
 app.listen(PORT, () => {

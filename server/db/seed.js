@@ -1,5 +1,6 @@
 const { PrismaClient } = require("@prisma/client");
 const { faker } = require("@faker-js/faker");
+require("dotenv").config();
 
 const prisma = new PrismaClient();
 
