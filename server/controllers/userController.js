@@ -1,7 +1,7 @@
 const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 
-const getAllUsers = async (req, res) => {
+export const getAllUsers = async (req, res) => {
   try {
     const users = await prisma.user.findMany();
     res.json(users);
@@ -10,7 +10,7 @@ const getAllUsers = async (req, res) => {
   }
 };
 
-const getSingleUser = async (req, res) => {
+export const getSingleUser = async (req, res) => {
   try {
     const userId = parseInt(req.params.id);
     const user = await prisma.user.findUnique({
@@ -22,4 +22,4 @@ const getSingleUser = async (req, res) => {
   }
 };
 
-export default { getAllUsers, getSingleUser };
+// module.exports = { getAllUsers, getSingleUser };
