@@ -12,7 +12,7 @@ app.use(cors());
 
 app.use("/server/user", userRoute);
 // app.use("/server/admin");
-app.use("/server/product", productRoute);
+// app.use("/server/product", productRoute);
 
 // add more routes here?
 // iniialize server
