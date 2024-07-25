@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import NavBar from "./components/NavBar";
+import HomePage from "./components/HomePage";
 
 // Routes need
 // Landing Page (Home), Shop all, clothing, collectables, home entertainment, manga and books, login, logout, account, single item, cart, Admin Page
@@ -13,7 +14,7 @@ function App() {
       <Router>
         <NavBar />
         <Routes>
-          <Route></Route>
+          <Route path="/" element={<HomePage />}></Route>
         </Routes>
       </Router>
     </>
