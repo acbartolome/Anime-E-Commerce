@@ -9,4 +9,7 @@ const { getAllUsers, getSingleUser } = require("../controllers/userController");
 
 router.get("/allUsers", getAllUsers);
 router.get("/allUsers/:id", getSingleUser);
+
+//Get Cart
+router.get("/cart", cartController.getCart);
 module.exports = router;
