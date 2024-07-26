@@ -9,12 +9,13 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 const NavBar = () => {
   // can you see this edit?
   // this is used to test if it works
-  const loggedIn = "something";
+  const loggedIn = false;
+  const admin = true;
   return (
     <>
       <Navbar expand="lg" className="bg-body-tertiary">
         <Container fluid>
-          <Navbar.Brand href="#">(WEBSITE NAME GOES HERE)</Navbar.Brand>
+          <Navbar.Brand href="/">(WEBSITE NAME GOES HERE)</Navbar.Brand>
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
             <Nav
@@ -22,26 +23,45 @@ const NavBar = () => {
               style={{ maxHeight: "100px" }}
               navbarScroll
             >
-              <Nav.Link href="#action1">Home</Nav.Link>
-              <Nav.Link href="#action2">Shop All</Nav.Link>
-              <Nav.Link href="#action3">Collectables</Nav.Link>
-              <Nav.Link href="#action4">Clothing</Nav.Link>
-              <Nav.Link href="#action5">Home Entertainment</Nav.Link>
-              <Nav.Link href="#action6">Manga & Books</Nav.Link>
+              <Nav.Link href="/">Home</Nav.Link>
+              <Nav.Link href="/collections/shop-all">Shop All</Nav.Link>
+              <Nav.Link href="/collections/collectables">Collectables</Nav.Link>
+              <Nav.Link href="/collections/clothing">Clothing</Nav.Link>
+              <Nav.Link href="/collections/home-entertainment">
+                Home Entertainment
+              </Nav.Link>
+              <Nav.Link href="/collections/manga-books">Manga & Books</Nav.Link>
 
               {/* need to review this to check for if else for what options are viewable when not logged in and logged off */}
               <div>
                 {!loggedIn ? (
-                  <Nav.Link href="#action5">Login</Nav.Link>
+                  <Nav>
+                    <Nav.Link href="/secure/login">Login</Nav.Link>
+                    <Nav.Link href="/secure/register">Register</Nav.Link>
+                  </Nav>
                 ) : (
-                  <NavDropdown title="User" id="navbarScrollingDropdown">
-                    <NavDropdown.Item href="#action6">Account</NavDropdown.Item>
-                    <NavDropdown.Item href="#action7">Cart</NavDropdown.Item>
-                    <NavDropdown.Divider />
-                    <NavDropdown.Item href="#action8">
-                      Admin Page
-                    </NavDropdown.Item>
-                  </NavDropdown>
+                  <Nav>
+                    <NavDropdown title="User" id="navbarScrollingDropdown">
+                      <NavDropdown.Item href="/account">
+                        My Account
+                      </NavDropdown.Item>
+                      <NavDropdown.Item href="/account/order-history">
+                        My Orders
+                      </NavDropdown.Item>
+                      <NavDropdown.Item href="/logout">Logout</NavDropdown.Item>
+                      <NavDropdown.Divider />
+                      {/* Need to figure out how to add this so it doesn't have a
+                      blank page */}
+                      {!admin ? (
+                        <div />
+                      ) : (
+                        <NavDropdown.Item href="/auth/admin-page">
+                          Admin Page
+                        </NavDropdown.Item>
+                      )}
+                    </NavDropdown>
+                    <Nav.Link href="/cart">Cart</Nav.Link>
+                  </Nav>
                 )}
               </div>
             </Nav>
