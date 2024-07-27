@@ -6,9 +6,6 @@ const {
   updateUser,
   deleteUser,
 } = require("../controllers/userController");
-// const productController = require("../controllers/productController");
-// const orderHistoryController = require("../controllers/orderHistoryController");
-// const cartController = require("../controllers/cartController");
 
 // Get all users
 

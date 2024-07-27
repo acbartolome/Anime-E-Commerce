@@ -1,3 +1,3 @@
-// get all orders
+// get all orders / view all orders for both
 
-//get a specific order
+//get a specific order by ID of the user
