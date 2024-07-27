@@ -1,6 +1,11 @@
 const express = require("express");
 const router = express.Router();
-const { getAllUsers, getSingleUser } = require("../controllers/userController");
+const {
+  getAllUsers,
+  getSingleUser,
+  updateUser,
+  deleteUser,
+} = require("../controllers/userController");
 // const productController = require("../controllers/productController");
 // const orderHistoryController = require("../controllers/orderHistoryController");
 // const cartController = require("../controllers/cartController");
@@ -9,7 +14,7 @@ const { getAllUsers, getSingleUser } = require("../controllers/userController");
 
 router.get("/allUsers", getAllUsers);
 router.get("/allUsers/:id", getSingleUser);
+router.put("/cart/:id", updateUser);
+router.delete("/cart/:id", deleteUser);
 
-//Get Cart
-router.get("/cart", cartController.getCart);
 module.exports = router;
