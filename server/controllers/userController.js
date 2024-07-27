@@ -23,4 +23,34 @@ const getSingleUser = async (req, res) => {
   }
 };
 
-module.exports = { getAllUsers, getSingleUser };
+const updateUser = async (req, res) => {
+  try {
+    const userId = parseInt(req.params.id);
+    const { name, email, password } = req.body;
+    // should we add a hash password
+    const updateUser = await prisma.user.update({
+      where: {
+        id: userId,
+      },
+      data: name,
+      email,
+      password,
+    });
+    res.send(updateUser);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const deleteUser = async (req, res) => {
+  try {
+    const userId = parseInt(req.params.id);
+    await prisma.user.delete({
+      where: { id: userId },
+    });
+    res.send("User deleted successfully");
+  } catch (error) {
+    console.log(error);
+  }
+};
+module.exports = { getAllUsers, getSingleUser, updateUser, deleteUser };
