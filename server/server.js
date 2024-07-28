@@ -3,6 +3,8 @@ const express = require("express");
 const cors = require("cors");
 const userRoute = require("./routes/userRoutes");
 const productRoute = require("./routes/productRoutes");
+const cartRoute = require("./routes/cartRoutes");
+const orderHistoryRoute = require("./routes/orderHistoryRoutes");
 
 const app = express();
 app.use(express.json());
@@ -10,9 +12,14 @@ app.use(express.json());
 // add cors
 app.use(cors());
 
-app.use("/server/user", userRoute);
+app.get("/", (req, res) => {
+  res.send("Hello from server!");
+});
+app.use("/users", userRoute);
 // app.use("/server/admin");
-// app.use("/server/product", productRoute);
+app.use("/product", productRoute);
+app.use("/cart", cartRoute);
+app.use("/orderhistory", orderHistoryRoute);
 
 // add more routes here?
 // iniialize server

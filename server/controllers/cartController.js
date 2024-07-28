@@ -1,15 +1,11 @@
 const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 
-const createProduct = async (req, res) => {
-  try {
-    const newProduct = await prisma.product.create({
-      data: req.body, //everything inside of the body will be saved
-    });
-    res.json(newProduct);
-  } catch (error) {
-    console.log(error);
-  }
-};
+// view cart based on ID
+
+//edit the items in your cart using Patch
+//identify the amount of items in the cart
+
+//remove an item from your cart using Patch
 
 module.exports = { createProduct };
