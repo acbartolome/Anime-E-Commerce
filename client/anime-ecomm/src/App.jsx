@@ -3,20 +3,20 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import NavBar from "./components/NavBar";
-import HomePage from "./components/HomePage";
-import Account from "./components/Account";
-import AdminPage from "./components/AdminPage";
-import Cart from "./components/Cart";
-import Clothing from "./components/Clothing";
-import Collectables from "./components/Collectables";
-import HomeEntertainment from "./components/HomeEntertainment";
-import Login from "./components/Login";
+import HomePage from "./pages/HomePage/HomePage";
+import Account from "./pages/Account";
+import AdminPage from "./pages/AdminPage";
+import Cart from "./pages/Cart";
+import Clothing from "./pages/Clothing";
+import Collectables from "./pages/Collectables";
+import HomeEntertainment from "./pages/HomeEntertainment";
+import Login from "./pages/Login";
 import Logout from "./components/Logout";
-import MangaBooks from "./components/MangaBooks";
-import OrderHistory from "./components/OrderHistory";
-import Register from "./components/Register";
-import ShopAll from "./components/ShopAll";
-import SingleProducts from "./components/SingleProduct";
+import MangaBooks from "./pages/MangaBooks";
+import OrderHistory from "./pages/OrderHistory";
+import Register from "./pages/Register";
+import ShopAll from "./pages/ShopAll";
+import SingleProducts from "./pages/SingleProduct";
 
 // Routes needed
 // Landing Page (Home), done
