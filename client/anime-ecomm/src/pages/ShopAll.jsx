@@ -15,9 +15,10 @@ const ShopAll =
     useEffect(() => {
       const fetchProducts = async () => {
         try {
-          const response = await fetch("https://localhost:3000/server/product");
+          const response = await fetch("http://localhost:3000/product/");
           const data = await response.json();
-          setProducts(data.products);
+          setProducts(data);
+          console.log(data);
         } catch (error) {
           console.error(error);
         }
@@ -26,14 +27,20 @@ const ShopAll =
     }, []);
 
     return (
-      <Card style={{ width: "18rem" }}>
-        <Card.Img variant="top" src="holder.js/100px180" />
-        <Card.Body>
-          <Card.Title>LIMITED EDITION</Card.Title>
-          <Card.Text>$4,999.99</Card.Text>
-          <Button variant="primary">Add to cart</Button>
-        </Card.Body>
-      </Card>
+      <div>
+        {products?.map((product) => {
+          return (
+            <Card style={{ width: "18rem" }}>
+              <Card.Img variant="top" src={product.imageUrl} />
+              <Card.Body>
+                <Card.Title>{product.name}</Card.Title>
+                <Card.Text>${product.price}</Card.Text>
+                <Button variant="primary">Add to cart</Button>
+              </Card.Body>
+            </Card>
+          );
+        })}
+      </div>
     );
   };
 
