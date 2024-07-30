@@ -41,7 +41,7 @@ model Cart {
   id        Int      @id @default(autoincrement())
   userId    Int      @unique
   user      User     @relation(fields: [userId], references: [id])
-  items     Json // [{userId, productId, quantity}]
+  items     Json // [{productId, quantity}]
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }

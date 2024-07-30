@@ -34,6 +34,23 @@ const getSingleProduct = async (req, res) => {
   }
 };
 
+//get by category
+//review this, i didnt get it.
+
+const getProductByCategory = async (req, res) => {
+  try {
+    const category = req.params.category;
+    const products = await prisma.product.findMany({
+      where: {
+        category: category,
+      },
+    });
+    res.send(products);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 //Create Product - Admin Only
 // add another parameter that allows for only admins
 const createProduct = async (req, res) => {
@@ -47,4 +64,9 @@ const createProduct = async (req, res) => {
   }
 };
 
-module.exports = { getAllProduct, getSingleProduct, createProduct };
+module.exports = {
+  getAllProduct,
+  getSingleProduct,
+  createProduct,
+  getProductByCategory,
+};
