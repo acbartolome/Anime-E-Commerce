@@ -3,6 +3,7 @@ const router = express.Router();
 const {
   getAllProduct,
   getSingleProduct,
+  getProductByCategory,
 } = require("../controllers/productController");
 
 //view all product as user and admin
@@ -32,5 +33,8 @@ router.put("/:id", (req, res) => {
 router.delete("/:id", (req, res) => {
   console.log("admin deleted product");
 });
+
+//get items by category instead of id
+router.get("/:category", getProductByCategory);
 
 module.exports = router;
