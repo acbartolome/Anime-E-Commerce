@@ -4,6 +4,11 @@ const prisma = new PrismaClient();
 const getAllProduct = async (req, res) => {
   try {
     const products = await prisma.product.findMany();
+
+    if (!products) {
+      return res.status(404).send("Products was not found.");
+    }
+
     res.send(products);
   } catch (error) {
     console.log(error);
@@ -11,12 +16,36 @@ const getAllProduct = async (req, res) => {
 };
 
 const getSingleProduct = async (req, res) => {
-  const { id } = req.params.id;
   try {
+    const productId = parseInt(req.params.id);
     const product = await prisma.product.findUnique({
-      where: { id },
+      where: {
+        id: productId,
+      },
     });
+
+    if (!product) {
+      return res.status(404).send("Product not found");
+    }
+
     res.send(product);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+//get by category
+//review this, i didnt get it.
+
+const getProductByCategory = async (req, res) => {
+  try {
+    const category = req.params.category;
+    const products = await prisma.product.findMany({
+      where: {
+        category: category,
+      },
+    });
+    res.send(products);
   } catch (error) {
     console.log(error);
   }
@@ -35,4 +64,9 @@ const createProduct = async (req, res) => {
   }
 };
 
-module.exports = { getAllProduct, getSingleProduct, createProduct };
+module.exports = {
+  getAllProduct,
+  getSingleProduct,
+  createProduct,
+  getProductByCategory,
+};

@@ -1,6 +1,11 @@
 const express = require("express");
 const router = express.Router();
 
+//see if they have a order history
+router.get("/", (req, res) => {
+  console.log("get order");
+});
+
 // get all orders / view all orders for both
 router.get("/", (res, req) => {
   console.log("all order history");
