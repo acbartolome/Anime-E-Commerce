@@ -1,6 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import "./ShopAll.css";
 
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
@@ -41,7 +42,11 @@ const ShopAll =
             {products?.map((product) => {
               return (
                 <Card key={product.id} style={{ width: "18rem" }}>
-                  <Card.Img variant="top" src={product.imageUrl} />
+                  <Card.Img
+                    onClick={() => navigate(`/products/${product.id}`)}
+                    variant="top"
+                    src={product.imageUrl}
+                  />
                   <Card.Body>
                     <Card.Title>{product.name}</Card.Title>
                     <Card.Text>${product.price}</Card.Text>

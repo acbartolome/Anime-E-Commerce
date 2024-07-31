@@ -15,8 +15,8 @@ import Logout from "./components/Logout";
 import MangaBooks from "./pages/MangaBooks";
 import OrderHistory from "./pages/OrderHistory";
 import Register from "./pages/Register";
-import ShopAll from "./pages/ShopAll";
-import SingleProducts from "./pages/SingleProduct";
+import ShopAll from "./pages/ShopAll/ShopAll";
+import SingleProduct from "./pages/SingleProduct/SingleProduct";
 
 // Routes needed
 // Landing Page (Home), done
@@ -47,7 +47,7 @@ function App() {
             element={<HomeEntertainment />}
           />
           <Route path="/collections/manga-books" element={<MangaBooks />} />
-          <Route path="/products/:id" element={<SingleProducts />} />
+          <Route path="/products/:id" element={<SingleProduct />} />
           <Route path="/secure/login" element={<Login />} />
           <Route path="/logout" element={<Logout />} />
           <Route path="/secure/register" element={<Register />} />
