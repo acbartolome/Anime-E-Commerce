@@ -10,6 +10,6 @@ const {
 router.get("/:id", viewOrderHistory);
 
 //get a specific order by ID of the user
-router.get("/product/:id", getOrder);
+router.get("/order/:id&:orderId", getOrder);
 
 module.exports = router;

@@ -22,8 +22,8 @@ app.use("/product", productRoute);
 app.use("/cart", cartRoute);
 app.use("/orderhistory", orderHistoryRoute);
 
-app.use("/register", registerRoute);
-// app.use("/login")
+app.use("/auth", registerRoute);
+
 // app.use("/logout")
 
 // add more routes here?

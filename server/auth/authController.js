@@ -36,7 +36,7 @@ const register = async (req, res) => {
       },
       JWT_SECRET_KEY,
       {
-        expiresIn: "5m",
+        expiresIn: "60m",
       }
     );
     res.status(201).send({ user, token });
@@ -48,6 +48,7 @@ const register = async (req, res) => {
 
 const login = async (req, res) => {
   const { email, password } = req.body;
+  console.log({ email, password });
 
   try {
     const user = await prisma.user.findUnique({
@@ -55,6 +56,9 @@ const login = async (req, res) => {
         email,
       },
     });
+
+    console.log(user);
+
     if (!user) {
       return res.status(401).send("User not found!");
     }
@@ -62,6 +66,7 @@ const login = async (req, res) => {
     //Step 1 choice
 
     const isMatch = await bcrypt.compare(password, user.password);
+    console.log("isMatched" + isMatch);
 
     if (!isMatch) {
       return res.status(401).send("Invalid credentials!");
@@ -75,9 +80,11 @@ const login = async (req, res) => {
       },
       JWT_SECRET_KEY,
       {
-        expiresIn: "5m",
+        expiresIn: "60m",
       }
     );
+
+    console.log(token);
     res.status(200).send({ token });
 
     //STEP2 : Alternate in finding user and password
