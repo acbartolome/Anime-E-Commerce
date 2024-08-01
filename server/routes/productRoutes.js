@@ -33,8 +33,9 @@ router.put("/:id", (req, res) => {
 router.delete("/:id", (req, res) => {
   console.log("admin deleted product");
 });
-
+// this portion of the code doesn't work since the route expects an "id"
+// adding "/category/:category" resolves the issue so get request works
 //get items by category instead of id
-router.get("/:category", getProductByCategory);
+router.get("/category/:category", getProductByCategory);
 
 module.exports = router;
