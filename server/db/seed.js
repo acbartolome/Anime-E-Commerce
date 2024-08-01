@@ -121,10 +121,10 @@ async function seedData() {
     });
 
     // create Products
-    // Categories: Clothing, Collectables (figures), Home Entertainment (DVD, CDs etc), Manga & Books
+    // Categories: clothing, collectables (figures), home-entertainment (DVD, CDs etc), manga-books
     const products = await prisma.product.createMany({
       data: [
-        // Clothing
+        // clothing
         {
           // productId: 1
           name: "Naruto Shippuden - Kakashi Hatake '90s T-Shirt",
@@ -132,7 +132,7 @@ async function seedData() {
           price: 24.95,
           imageUrl:
             "https://store.crunchyroll.com/on/demandware.static/-/Sites-crunchyroll-master-catalog/default/dwffb90b88/images/6715721318444-1-ripple-junction-unisex-t-shirts-naruto-shippuden-kakashi-hatake-90s-t-shirt-crunchyroll-exclusive-29755295334444.jpg",
-          category: "Clothing",
+          category: "clothing",
           stock: 10,
         },
         {
@@ -142,7 +142,7 @@ async function seedData() {
           price: 44.95,
           imageUrl:
             "https://store.crunchyroll.com/on/demandware.static/-/Sites-crunchyroll-master-catalog/default/dwbceb9662/images/6872429690924-1-bioworld-hoodies-outerwear-jujutsu-kaisen-gojo-crossed-arms-hoodie-32031244550188.jpg",
-          category: "Clothing",
+          category: "clothing",
           stock: 15,
         },
         {
@@ -152,7 +152,7 @@ async function seedData() {
           price: 29.95,
           imageUrl:
             "https://store.crunchyroll.com/on/demandware.static/-/Sites-crunchyroll-master-catalog/default/dwd79e8624/images/OPAS3002CY_one-piece-luffy-scattered-devil-fruit-ss-t-shirt_1.jpg",
-          category: "Clothing",
+          category: "clothing",
           stock: 8,
         },
         {
@@ -162,7 +162,7 @@ async function seedData() {
           price: 19.95,
           imageUrl:
             "https://store.crunchyroll.com/on/demandware.static/-/Sites-crunchyroll-master-catalog/default/dw9ba60740/Apparel/TS62AMATNRE%20-%20Attack%20On%20Titan%20-%20Colossal%20Titan%20T-Shirt/TS62AMATN_1.jpg",
-          category: "Clothing",
+          category: "clothing",
           stock: 20,
         },
         {
@@ -172,17 +172,17 @@ async function seedData() {
           price: 69.95,
           imageUrl:
             "https://store.crunchyroll.com/on/demandware.static/-/Sites-crunchyroll-master-catalog/default/dw4d0aa621/images/AP9W7CDBZ_dragon-ball-z-z-fighters-sweatpants_1.jpg",
-          category: "Clothing",
+          category: "clothing",
           stock: 30,
         },
-        // Collectables
+        // collectables
         {
           name: "JUJUTSU KAISEN - Satoru Gojo 1/7 Scale Figure (Tokyo Jujutsu High School Ver.)",
           description: faker.lorem.paragraph(),
           price: 135.95,
           imageUrl:
             "https://store.crunchyroll.com/on/demandware.static/-/Sites-crunchyroll-master-catalog/default/dw9a99b4aa/images/4580590195677_jujutsu-kaisen-satoru-gojo-17-scale-figure-tokyo-jujutsu-high-school-ver_1.jpg",
-          category: "Collectables",
+          category: "collectables",
           stock: 15,
         },
         {
@@ -191,7 +191,7 @@ async function seedData() {
           price: 39.95,
           imageUrl:
             "https://store.crunchyroll.com/on/demandware.static/-/Sites-crunchyroll-master-catalog/default/dwc5093e78/images/4983164898125_naruto-shippuden-sasuke-uchiha-vibration-stars-iv-prize-figure_1.jpg",
-          category: "Collectables",
+          category: "collectables",
           stock: 20,
         },
         {
@@ -200,7 +200,7 @@ async function seedData() {
           price: 185.95,
           imageUrl:
             "https://store.crunchyroll.com/on/demandware.static/-/Sites-crunchyroll-master-catalog/default/dw8d3a98e5/images/4535123840678_lelouch-of-the-rebellion-code-geass-lelouch-lamperouge-gem-series-figure-gem15th-anniversary-ver_1.jpg",
-          category: "Collectables",
+          category: "collectables",
           stock: 16,
         },
         {
@@ -209,7 +209,7 @@ async function seedData() {
           price: 335.95,
           imageUrl:
             "https://store.crunchyroll.com/on/demandware.static/-/Sites-crunchyroll-master-catalog/default/dw80218f22/images/4981932521503_persona-5-makoto-niijima-17-scale-figure-school-uniform-ver_12.jpg",
-          category: "Collectables",
+          category: "collectables",
           stock: 10,
         },
         {
@@ -219,17 +219,17 @@ async function seedData() {
           price: 189.95,
           imageUrl:
             "https://store.crunchyroll.com/on/demandware.static/-/Sites-crunchyroll-master-catalog/default/dw97d74d6c/images/4897056202122_fullmetal-alchemist-brotherhood-alphonse-elric-figzero-16-scale-figure_1.jpg",
-          category: "Collectables",
+          category: "collectables",
           stock: 18,
         },
-        // Home Entertainment
+        // home-entertainment
         {
           name: "Dragon Ball Super - The Complete Series - Limited Edition - Blu-ray",
           description: faker.lorem.paragraph(),
           price: 179.95,
           imageUrl:
             "https://store.crunchyroll.com/on/demandware.static/-/Sites-crunchyroll-master-catalog/default/dw0e101fe7/images/704400106491_dragon-ball-super-the-complete-series-limited-edition-blu-ray_1.jpg",
-          category: "Home Entertainment",
+          category: "home-entertainment",
           stock: 20,
         },
         {
@@ -238,7 +238,7 @@ async function seedData() {
           price: 39.95,
           imageUrl:
             "https://store.crunchyroll.com/on/demandware.static/-/Sites-crunchyroll-master-catalog/default/dw6defb6a6/images/600385302814_perfect-blue-original-score-vinyl-deluxe-audiophile-edition_1.jpg",
-          category: "Home Entertainment",
+          category: "home-entertainment",
           stock: 25,
         },
         {
@@ -247,7 +247,7 @@ async function seedData() {
           price: 24.95,
           imageUrl:
             "https://store.crunchyroll.com/on/demandware.static/-/Sites-crunchyroll-master-catalog/default/dw6101f541/rightstuf/826663198829_anime-A-Silent-Voice-Blu-ray-DVD-primary.jpg",
-          category: "Home Entertainment",
+          category: "home-entertainment",
           stock: 30,
         },
         {
@@ -256,7 +256,7 @@ async function seedData() {
           price: 549.95,
           imageUrl:
             "https://store.crunchyroll.com/on/demandware.static/-/Sites-crunchyroll-master-catalog/default/dwf82897af/Home%20Video/704400105449/704400105449_code-geass-collectors-edition-blu-ray_2.jpg",
-          category: "Home Entertainment",
+          category: "home-entertainment",
           stock: 5,
         },
         {
@@ -266,17 +266,17 @@ async function seedData() {
           price: 24.95,
           imageUrl:
             "https://store.crunchyroll.com/on/demandware.static/-/Sites-crunchyroll-master-catalog/default/dwdb47d4db/rightstuf/826663209945_anime-my-neighbor-totoro-steelbook-blu-ray-dvd-primary.jpg",
-          category: "Home Entertainment",
+          category: "home-entertainment",
           stock: 30,
         },
-        // Manga & Books
+        // manga-books
         {
           name: "Solo Leveling Manhwa Volume 1 (Color)",
           description: faker.lorem.paragraph(),
           price: 13.95,
           imageUrl:
             "https://store.crunchyroll.com/on/demandware.static/-/Sites-crunchyroll-master-catalog/default/dweb0aaf7a/rightstuf/9781975319434_manga-solo-leveling-manga-volume-1-primary.jpg",
-          category: "Manga & Books",
+          category: "manga-books",
           stock: 15,
         },
         {
@@ -285,7 +285,7 @@ async function seedData() {
           price: 9.95,
           imageUrl:
             "https://store.crunchyroll.com/on/demandware.static/-/Sites-crunchyroll-master-catalog/default/dw9aa641f8/rightstuf/9781974710027_manga-jujutsu-kaisen-volume-1-primary.jpg",
-          category: "Manga & Books",
+          category: "manga-books",
           stock: 20,
         },
         {
@@ -294,7 +294,7 @@ async function seedData() {
           price: 9.95,
           imageUrl:
             "https://store.crunchyroll.com/on/demandware.static/-/Sites-crunchyroll-master-catalog/default/dw7c63d882/images/9781421501086_nana-graphic-novel-1_1.jpg",
-          category: "Manga & Books",
+          category: "manga-books",
           stock: 18,
         },
         {
@@ -303,7 +303,7 @@ async function seedData() {
           price: 179.95,
           imageUrl:
             "https://store.crunchyroll.com/on/demandware.static/-/Sites-crunchyroll-master-catalog/default/dw53204b6b/rightstuf/9781421526102_manga-Bleach-Box-Set-1-primary.jpg",
-          category: "Manga & Books",
+          category: "manga-books",
           stock: 10,
         },
         {
@@ -313,7 +313,7 @@ async function seedData() {
           price: 229.95,
           imageUrl:
             "https://store.crunchyroll.com/on/demandware.static/-/Sites-crunchyroll-master-catalog/default/dwe0c8a6d3/rightstuf/9781421525822_manga-Naruto-Graphic-Novel-Box-Set-1-27-primary.jpg",
-          category: "Manga & Books",
+          category: "manga-books",
           stock: 10,
         },
       ],
