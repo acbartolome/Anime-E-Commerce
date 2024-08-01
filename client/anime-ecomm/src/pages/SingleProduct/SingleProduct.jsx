@@ -1,5 +1,4 @@
 import React from "react";
-import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./SingleProduct.css";
@@ -11,7 +10,6 @@ const SingleProduct = () => {
   const [product, setProduct] = useState([]);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
-  const { id } = useParams();
 
   useEffect(() => {
     const getProduct = async () => {

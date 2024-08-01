@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./ShopAll.css";
+import { useSearchParams } from "react-router-dom";
 
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
@@ -11,13 +12,20 @@ const ShopAll =
     // establishng the potential useState
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [searchParams] = useSearchParams();
+    const category = searchParams.get("category");
     const navigate = useNavigate();
     // add search term? but should we click the 'search' button to actually display a new page?
 
     useEffect(() => {
       const fetchProducts = async () => {
         try {
-          const response = await fetch("http://localhost:3000/product/");
+          console.log(category);
+          // use to check which route if category or not
+          const route = category
+            ? `http://localhost:3000/product/category/${category}`
+            : "http://localhost:3000/product/";
+          const response = await fetch(route);
           const data = await response.json();
           setProducts(data);
           console.log(data);
@@ -28,7 +36,7 @@ const ShopAll =
         }
       };
       fetchProducts();
-    }, []);
+    }, [category]);
 
     // ----- handle logged in to add item to cart here ------
 

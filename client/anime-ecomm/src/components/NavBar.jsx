@@ -25,12 +25,18 @@ const NavBar = () => {
             >
               <Nav.Link href="/">Home</Nav.Link>
               <Nav.Link href="/collections/shop-all">Shop All</Nav.Link>
-              <Nav.Link href="/collections/collectables">Collectables</Nav.Link>
-              <Nav.Link href="/collections/clothing">Clothing</Nav.Link>
-              <Nav.Link href="/collections/home-entertainment">
+              <Nav.Link href="/collections/shop-all?category=collectables">
+                Collectables
+              </Nav.Link>
+              <Nav.Link href="/collections/shop-all?category=clothing">
+                Clothing
+              </Nav.Link>
+              <Nav.Link href="/collections/shop-all?category=home-entertainment">
                 Home Entertainment
               </Nav.Link>
-              <Nav.Link href="/collections/manga-books">Manga & Books</Nav.Link>
+              <Nav.Link href="/collections/shop-all?category=manga-books">
+                Manga & Books
+              </Nav.Link>
 
               {/* need to review this to check for if else for what options are viewable when not logged in and logged off */}
               <div>
