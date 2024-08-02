@@ -1,15 +1,18 @@
 //For Users
 const express = require("express");
 const router = express.Router();
-const { addToCart, removeItem } = require("../controllers/cartController");
+const {
+  viewCartItem,
+  addToCart,
+  removeItem,
+} = require("../controllers/cartController");
 
 // view cart based on ID
-router.get("/", (req, res) => {
-  console.log("view all items in cart");
-});
+router.get("/", viewCartItem);
 
 //add to cart
 router.post("/", addToCart);
+
 //edit the items in your cart using Patch
 //identify the amount of items in the cart
 router.patch("/:id", (req, res) => {
