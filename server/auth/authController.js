@@ -15,10 +15,10 @@ const register = async (req, res) => {
     });
 
     if (existingUser) {
-      return res.status(400).json({ message: "Email already exists" });
+      return res.status(400).json({ message: "Email already exists." });
     }
 
-    const hashPassword = await bcrypt.hash(password, 20);
+    const hashPassword = await bcrypt.hash(password, 10);
 
     const user = await prisma.user.create({
       data: {
