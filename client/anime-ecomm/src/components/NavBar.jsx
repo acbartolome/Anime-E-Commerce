@@ -9,7 +9,7 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 const NavBar = () => {
   // can you see this edit?
   // this is used to test if it works
-  const loggedIn = false;
+  const loggedIn = true;
   const admin = true;
   return (
     <>
@@ -44,6 +44,7 @@ const NavBar = () => {
                   <Nav>
                     <Nav.Link href="/secure/login">Login</Nav.Link>
                     <Nav.Link href="/secure/register">Register</Nav.Link>
+                    <Nav.Link href="/cart">Cart</Nav.Link>
                   </Nav>
                 ) : (
                   <Nav>
@@ -58,9 +59,14 @@ const NavBar = () => {
                       <NavDropdown.Divider />
                       {/* Need to figure out how to add this so it doesn't have a
                       blank page */}
-                      {!admin ? (
+                      {/* {!admin ? (
                         <div />
                       ) : (
+                        <NavDropdown.Item href="/auth/admin-page">
+                          Admin Page
+                        </NavDropdown.Item>
+                      )} */}
+                      {admin && (
                         <NavDropdown.Item href="/auth/admin-page">
                           Admin Page
                         </NavDropdown.Item>
