@@ -58,7 +58,7 @@ const ShopAll =
           <Container fluid>
             <Row>
               <Col className="header_title">
-                <h1>Shop All</h1>
+                <h1>{category ? category : "Shop All"}</h1>
               </Col>
             </Row>
             <Row>
