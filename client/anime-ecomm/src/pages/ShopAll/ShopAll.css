@@ -1,8 +1,13 @@
-body {
-  background-image: url("../../assets/dex-ezekiel-IxDPZ-AHfoI-unsplash.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-}
+/* body {
+  background-color: #e5e5f7;
+  opacity: 0.8;
+  background-image: repeating-radial-gradient(
+      circle at 0 0,
+      transparent 0,
+#e5e5f7 10px
+    ),
+    repeating-linear-gradient(#444cf755, #444cf7);
+} */
 
 .header_title {
   display: flex;
@@ -29,7 +34,7 @@ img:hover {
 .product-grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  gap: 16px; /* Adjust spacing between items as needed */
+  gap: 16px; /*Adjust spacing between items as needed */
 }
 
 .product-image {

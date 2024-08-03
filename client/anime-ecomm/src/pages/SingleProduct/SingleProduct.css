@@ -1,9 +1,9 @@
 /* SingleProduct.css */
-body {
+/* body {
   background-image: url("../../assets/dex-ezekiel-IxDPZ-AHfoI-unsplash.jpg");
   background-repeat: no-repeat;
   background-size: cover;
-}
+} */
 .product-container {
   display: flex;
   justify-content: center;
