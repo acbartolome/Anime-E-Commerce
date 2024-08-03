@@ -1,5 +1,6 @@
 const { PrismaClient } = require("@prisma/client");
 const { faker } = require("@faker-js/faker");
+const bcrypt = require("bcrypt");
 require("dotenv").config();
 
 const prisma = new PrismaClient();
@@ -12,6 +13,11 @@ async function resetDatabase() {
   await prisma.$executeRaw`TRUNCATE TABLE "OrderHistory" RESTART IDENTITY CASCADE`;
   await prisma.$executeRaw`TRUNCATE TABLE "User" RESTART IDENTITY CASCADE`;
   await prisma.$executeRaw`COMMIT`;
+}
+
+async function hashPassword(password) {
+  const salt = await bcrypt.genSalt(10);
+  return await bcrypt.hash(password, salt);
 }
 
 // seed database
@@ -29,13 +35,13 @@ async function seedData() {
         {
           name: "Adryan",
           email: "admin-adryan@gmail.com",
-          password: "This1sTotallyaSeCurePasSword",
+          password: await hashPassword("This1sTotallyaSeCurePasSword"),
           admin: true,
         },
         {
           name: "Bradley",
           email: "admin-bradley@gmail.com",
-          password: "This1sTotallyaSeCurePasSword",
+          password: await hashPassword("This1sTotallyaSeCurePasSword"),
           admin: true,
         },
       ],
@@ -48,19 +54,19 @@ async function seedData() {
         {
           name: faker.person.fullName(),
           email: faker.internet.email(),
-          password: faker.internet.password(),
+          password: await hashPassword(faker.internet.password()),
           admin: false,
         },
         {
           name: faker.person.fullName(),
           email: faker.internet.email(),
-          password: faker.internet.password(),
+          password: await hashPassword(faker.internet.password()),
           admin: false,
         },
         {
           name: faker.person.fullName(),
           email: faker.internet.email(),
-          password: faker.internet.password(),
+          password: await hashPassword(faker.internet.password()),
           admin: false,
         },
       ],
