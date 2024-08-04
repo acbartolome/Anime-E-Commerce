@@ -63,8 +63,8 @@ const ShopAll =
             </Row>
             <Row>
               {products?.map((product) => (
-                <Col key={product.id} xs={6} sm={4} md={3} lg={2} className="mb-4">
-                  <Card style={{ width: "100%" }}>
+                <Col key={product.id} xs={6} sm={4} md={3} lg={3} className="mb-4 mt-4 text-center">
+                  <Card style={{ width: "100%", height: "100%" }}>
                     <Card.Img
                       onClick={() => navigate(`/products/${product.id}`)}
                       variant="top"
@@ -73,9 +73,9 @@ const ShopAll =
                     />
                     <Card.Body>
                       <Card.Title>{product.name}</Card.Title>
-                      <Card.Text>${product.price}</Card.Text>
-                      <Button variant="primary" onClick={() => handleViewDetails(product.id)}>View details</Button>
-                      <Button variant="success">Add to Cart</Button>
+                      <Card.Text className="cartText">${product.price}</Card.Text>
+                      <Button variant="primary" className="button" onClick={() => handleViewDetails(product.id)}>View details</Button>
+                      <Button variant="success" className="button">Add to Cart</Button>
                     </Card.Body>
                   </Card>
                 </Col>
@@ -83,18 +83,6 @@ const ShopAll =
             </Row>
           </Container>
         )}
-        <div className="stars">
-          <div className="star"></div>
-          <div className="star"></div>
-          <div className="star"></div>
-          <div className="star"></div>
-          <div className="star"></div>
-          <div className="star"></div>
-          <div className="star"></div>
-          <div className="star"></div>
-          <div className="star"></div>
-          <div className="star"></div>
-        </div>
       </>
     );
   };

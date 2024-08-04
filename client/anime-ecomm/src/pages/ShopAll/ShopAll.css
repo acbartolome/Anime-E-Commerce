@@ -25,20 +25,36 @@ img:hover {
   cursor: pointer;
 }
 
-.product_Card {
-  display: flex;
-  flex-wrap: wrap;
-  margin: 10px;
-}
-
-.product-grid {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 16px; /*Adjust spacing between items as needed */
-}
-
 .product-image {
-  width: 100%;
+  width: auto;
   height: 200px;
   object-fit: cover;
 }
+
+.cartText {
+  position: relative;
+  top: 20px;
+  padding: 5px;
+}
+
+.products {
+  margin-top: 30px;
+}
+
+.button {
+  margin-top: 20px;
+  margin-left: 10px;
+  /* margin: 10px; */
+}
+
+/* .product_Card {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 10px;
+} */
+
+/* .product-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 36px; /*Adjust spacing between items as needed 
+} */
