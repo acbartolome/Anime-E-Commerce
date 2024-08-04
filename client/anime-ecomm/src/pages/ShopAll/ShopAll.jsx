@@ -4,12 +4,16 @@ import { useNavigate } from "react-router-dom";
 import "./ShopAll.css";
 import { useSearchParams } from "react-router-dom";
 
+import Col from 'react-bootstrap/Col';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 
 const ShopAll =
   (/* add functionality here for loggining{ isLoggedIn, setCart }*/) => {
     // establishng the potential useState
+    //use local storage which will save the items for when they need to login , create a func
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
     const [searchParams] = useSearchParams();
@@ -40,31 +44,57 @@ const ShopAll =
 
     // ----- handle logged in to add item to cart here ------
 
+
+    //.. add functionality for handleViewDetails here ------
+    const handleViewDetails = (productId) => {
+      navigate(`/products/${productId}`);
+    };
+
     return (
       <>
-        {/* map through the products */}
         {loading ? (
           <h1>Loading items....</h1>
         ) : (
-          <div>
-            {products?.map((product) => {
-              return (
-                <Card key={product.id} style={{ width: "18rem" }}>
-                  <Card.Img
-                    onClick={() => navigate(`/products/${product.id}`)}
-                    variant="top"
-                    src={product.imageUrl}
-                  />
-                  <Card.Body>
-                    <Card.Title>{product.name}</Card.Title>
-                    <Card.Text>${product.price}</Card.Text>
-                    <Button variant="primary">Add to cart</Button>
-                  </Card.Body>
-                </Card>
-              );
-            })}
-          </div>
+          <Container fluid>
+            <Row>
+              <Col className="header_title">
+                <h1>{category ? category : "Shop All"}</h1>
+              </Col>
+            </Row>
+            <Row>
+              {products?.map((product) => (
+                <Col key={product.id} xs={6} sm={4} md={3} lg={2} className="mb-4">
+                  <Card style={{ width: "100%" }}>
+                    <Card.Img
+                      onClick={() => navigate(`/products/${product.id}`)}
+                      variant="top"
+                      src={product.imageUrl}
+                      className="product-image"
+                    />
+                    <Card.Body>
+                      <Card.Title>{product.name}</Card.Title>
+                      <Card.Text>${product.price}</Card.Text>
+                      <Button variant="primary" onClick={() => handleViewDetails(product.id)}>View details</Button>
+                      <Button variant="success">Add to Cart</Button>
+                    </Card.Body>
+                  </Card>
+                </Col>
+              ))}
+            </Row>
+          </Container>
         )}
+        <div className="stars">
+          <div className="star"></div>
+          <div className="star"></div>
+          <div className="star"></div>
+          <div className="star"></div>
+          <div className="star"></div>
+          <div className="star"></div>
+          <div className="star"></div>
+          <div className="star"></div>
+          <div className="star"></div>
+          <div className="star"></div>
+        </div>
       </>
     );
   };

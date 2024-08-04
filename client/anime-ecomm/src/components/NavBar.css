@@ -1,0 +1,31 @@
+/* .nav-bar {
+  background-color: #e5e5f7;
+  opacity: 0.8;
+  background-image: url(../assets/dex-ezekiel-IxDPZ-AHfoI-unsplash.jpg);
+  background-size: cover;
+} */
+
+/* NavBar.css */
+
+.custom-navbar {
+  background-color: #343a40; /* Dark background color */
+  color: white;
+}
+
+.custom-navbar .navbar-brand,
+.custom-navbar .nav-link,
+.custom-navbar .nav-dropdown-item {
+  color: white !important;
+}
+
+.custom-navbar .nav-link:hover,
+.custom-navbar .nav-dropdown-item:hover {
+  color: #ffeb3b !important; /* Highlight color on hover */
+}
+
+.sticky-top {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 1030;
+}

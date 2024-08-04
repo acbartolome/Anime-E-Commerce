@@ -1,0 +1,28 @@
+/* SingleProduct.css */
+/* body {
+  background-image: url("../../assets/dex-ezekiel-IxDPZ-AHfoI-unsplash.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+} */
+.product-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.product-card {
+  margin: auto;
+  text-align: center;
+}
+
+.product-title {
+  font-family: "Arial", sans-serif; /* Change to your desired font */
+  font-size: 24px; /* Change to your desired font size */
+  font-weight: bold; /* Optional: make the font bold */
+}
+
+.product-description {
+  font-size: 16px; /* Change to your desired font size */
+  color: #555; /* Optional: change the text color */
+}

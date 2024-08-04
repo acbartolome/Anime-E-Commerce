@@ -5,6 +5,7 @@ import Form from "react-bootstrap/Form";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
+import "./NavBar.css"
 
 const NavBar = ({ isLoggedIn }) => {
   // can you see this edit?
@@ -13,9 +14,10 @@ const NavBar = ({ isLoggedIn }) => {
   // const admin = true;
   return (
     <>
-      <Navbar expand="lg" className="bg-body-tertiary">
+      {/* "bg-body-tertiary"  - place that inside of your <Navbar> className. */}
+      <Navbar expand="lg" className="custom-navbar sticky-top">
         <Container fluid>
-          <Navbar.Brand href="/">(WEBSITE NAME GOES HERE)</Navbar.Brand>
+          <Navbar.Brand href="/">AnimEComm Shop</Navbar.Brand>
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
             <Nav
