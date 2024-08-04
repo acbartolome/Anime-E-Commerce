@@ -58,33 +58,33 @@ const HomePage = () => {
       <Row>
         {/* include pictures of the 4 categories  */}
         <Col>
-          Collectables
+          <p>Collectables</p>
           <img
             className="homeCategory"
             src="https://store.crunchyroll.com/on/demandware.static/-/Sites-crunchyroll-master-catalog/default/dw8d3a98e5/images/4535123840678_lelouch-of-the-rebellion-code-geass-lelouch-lamperouge-gem-series-figure-gem15th-anniversary-ver_1.jpg"
           />
         </Col>
         <Col>
-          Clothing
+          <p>Clothing</p>
           <img
             className="homeCategory"
-            src="https://p325k7wa.twic.pics/high/jujutsu-kaisen/jujutsu-kaisen-cursed-clash/00-page-setup/JJK-header-mobile2.jpg?twic=v1/resize=760/step=10/quality=80"
+            src="https://store.crunchyroll.com/on/demandware.static/-/Sites-crunchyroll-master-catalog/default/dw0d6c04fd/images/BHAS2678_bleach-ichigo-soul-reaper-ss-t-shirt_5.jpg"
           />
         </Col>
       </Row>
       <Row>
         <Col>
-          Home Entertainment
+          <p>Home Entertainment</p>
           <img
             className="homeCategory"
-            src="https://p325k7wa.twic.pics/high/jujutsu-kaisen/jujutsu-kaisen-cursed-clash/00-page-setup/JJK-header-mobile2.jpg?twic=v1/resize=760/step=10/quality=80"
+            src="https://store.crunchyroll.com/on/demandware.static/-/Sites-crunchyroll-master-catalog/default/dw49c583aa/rightstuf/704400107368_anime-attack-on-titan-the-final-season-part-2-limited-edition-blu-ray-dvd-primary.jpg"
           />
         </Col>
         <Col>
-          Manga & Books
+          <p>Manga & Books</p>
           <img
             className="homeCategory"
-            src="https://p325k7wa.twic.pics/high/jujutsu-kaisen/jujutsu-kaisen-cursed-clash/00-page-setup/JJK-header-mobile2.jpg?twic=v1/resize=760/step=10/quality=80"
+            src="https://cdn10.bigcommerce.com/s-g9n04qy/products/814590/images/837237/61GpjyHb9VL._SL1350___47754.1687810750.500.500.jpg?c=2"
           />
         </Col>
       </Row>
