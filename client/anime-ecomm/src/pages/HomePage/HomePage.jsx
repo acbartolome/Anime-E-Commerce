@@ -10,10 +10,10 @@ import "./HomePage.css";
 
 const HomePage = () => {
   return (
-    <Container>
-      <Row>
+    <Container className="homepage-container">
+      <Row className="hero-section">
         {/* need to figure out why image is not targeting width  */}
-        <Col>
+        <Col className="hero-carousel">
           {/* include a carousel of images?  */}
           <Carousel>
             <Carousel.Item>
@@ -53,7 +53,7 @@ const HomePage = () => {
             </Carousel.Item>
           </Carousel>
         </Col>
-        <Col>Popular Items</Col>
+        {/* <Col>Popular Items</Col> */}
       </Row>
       <Row>
         {/* include pictures of the 4 categories  */}
@@ -61,7 +61,7 @@ const HomePage = () => {
           Collectables
           <img
             className="homeCategory"
-            src="https://p325k7wa.twic.pics/high/jujutsu-kaisen/jujutsu-kaisen-cursed-clash/00-page-setup/JJK-header-mobile2.jpg?twic=v1/resize=760/step=10/quality=80"
+            src="https://store.crunchyroll.com/on/demandware.static/-/Sites-crunchyroll-master-catalog/default/dw8d3a98e5/images/4535123840678_lelouch-of-the-rebellion-code-geass-lelouch-lamperouge-gem-series-figure-gem15th-anniversary-ver_1.jpg"
           />
         </Col>
         <Col>
