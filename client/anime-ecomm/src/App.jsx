@@ -29,15 +29,32 @@ import SingleProduct from "./pages/SingleProduct/SingleProduct";
 // Admin Page
 
 function App() {
+  const [token, setToken] = useState(localStorage.getItem("token") || null);
+  const [admin, setAdmin] = useState();
+  const [isLoggedIn, setIsLoggedIn] = useState(!!token);
+  // set cart????
+  // const [cart, setCart] = useState(() => {
+  //   const savedCart = localStorage.getItem("cart");
+  //   return savedCart ? JSON.parse(savedCart) : [];
+  // });
   return (
     <>
       <Router>
-        <NavBar />
+        <NavBar isLoggedIn={isLoggedIn} />
         <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/collections/shop-all" element={<ShopAll />} />
+          <Route
+            path="/"
+            element={<HomePage isLoggedIn={isLoggedIn} token={token} />}
+          />
+          <Route
+            path="/collections/shop-all"
+            element={<ShopAll isLoggedIn={isLoggedIn} token={token} />}
+          />
           <Route path="/products/:id" element={<SingleProduct />} />
-          <Route path="/secure/login" element={<Login />} />
+          <Route
+            path="/secure/login"
+            element={<Login setIsLoggedIn={setIsLoggedIn} />}
+          />
           <Route path="/logout" element={<Logout />} />
           <Route path="/secure/register" element={<Register />} />
           <Route path="/account" element={<Account />} />
