@@ -6,11 +6,11 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 
-const NavBar = () => {
+const NavBar = ({ isLoggedIn }) => {
   // can you see this edit?
   // this is used to test if it works
-  const loggedIn = true;
-  const admin = true;
+  // const loggedIn = true;
+  // const admin = true;
   return (
     <>
       <Navbar expand="lg" className="bg-body-tertiary">
@@ -40,7 +40,7 @@ const NavBar = () => {
 
               {/* need to review this to check for if else for what options are viewable when not logged in and logged off */}
               <div>
-                {!loggedIn ? (
+                {!isLoggedIn ? (
                   <Nav>
                     <Nav.Link href="/secure/login">Login</Nav.Link>
                     <Nav.Link href="/secure/register">Register</Nav.Link>
@@ -66,11 +66,11 @@ const NavBar = () => {
                           Admin Page
                         </NavDropdown.Item>
                       )} */}
-                      {admin && (
+                      {/* {admin && (
                         <NavDropdown.Item href="/auth/admin-page">
                           Admin Page
                         </NavDropdown.Item>
-                      )}
+                      )} */}
                     </NavDropdown>
                     <Nav.Link href="/cart">Cart</Nav.Link>
                   </Nav>
