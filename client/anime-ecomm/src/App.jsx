@@ -55,7 +55,12 @@ function App() {
             path="/secure/login"
             element={<Login setIsLoggedIn={setIsLoggedIn} />}
           />
-          <Route path="/logout" element={<Logout />} />
+          <Route
+            path="/logout"
+            element={
+              <Logout setToken={setToken} setIsLoggedIn={setIsLoggedIn} />
+            }
+          />
           <Route path="/secure/register" element={<Register />} />
           <Route path="/account" element={<Account />} />
           <Route path="/account/order-history" element={<OrderHistory />} />
