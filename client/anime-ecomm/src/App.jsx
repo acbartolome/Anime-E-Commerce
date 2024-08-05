@@ -62,7 +62,10 @@ function App() {
             }
           />
           <Route path="/secure/register" element={<Register />} />
-          <Route path="/account" element={<Account />} />
+          <Route
+            path="/account"
+            element={<Account isLoggedIn={isLoggedIn} />}
+          />
           <Route path="/account/order-history" element={<OrderHistory />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/auth/admin-page" element={<AdminPage />} />
