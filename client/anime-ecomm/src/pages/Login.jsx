@@ -1,10 +1,12 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import "./Form.css";
 
 import FloatingLabel from "react-bootstrap/FloatingLabel";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import Col from "react-bootstrap/Col";
 
 const Login = ({ setIsLoggedIn }) => {
   const [email, setEmail] = useState("");
@@ -37,33 +39,42 @@ const Login = ({ setIsLoggedIn }) => {
   };
 
   return (
-    <Form onSubmit={handleLogin}>
-      <FloatingLabel
-        controlId="floatingInput"
-        label="Email address"
-        className="mb-3"
-      >
-        <Form.Control
-          type="email"
-          placeholder="name@example.com"
-          onChange={(event) => {
-            setEmail(event.target.value);
-          }}
-        />
-      </FloatingLabel>
-      <FloatingLabel controlId="floatingPassword" label="Password">
-        <Form.Control
-          type="password"
-          placeholder="Password"
-          onChange={(event) => {
-            setPassword(event.target.value);
-          }}
-        />
-      </FloatingLabel>
-      <Button type="submit" variant="dark" onSubmit={handleLogin}>
-        Login
-      </Button>
-    </Form>
+    <>
+      <Col className="header_title">
+        <h1>Login</h1>
+      </Col>
+      <Form onSubmit={handleLogin} className="formParent">
+        <FloatingLabel
+          controlId="floatingInput"
+          label="Email address"
+          className="mb-3"
+        >
+          <Form.Control
+            type="email"
+            placeholder="name@example.com"
+            onChange={(event) => {
+              setEmail(event.target.value);
+            }}
+          />
+        </FloatingLabel>
+        <FloatingLabel
+          controlId="floatingPassword"
+          label="Password"
+          className="mb-3"
+        >
+          <Form.Control
+            type="password"
+            placeholder="Password"
+            onChange={(event) => {
+              setPassword(event.target.value);
+            }}
+          />
+        </FloatingLabel>
+        <Button type="submit" variant="dark" onSubmit={handleLogin}>
+          Login
+        </Button>
+      </Form>
+    </>
   );
 };
 

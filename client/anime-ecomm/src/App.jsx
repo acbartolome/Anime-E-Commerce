@@ -50,7 +50,10 @@ function App() {
             path="/collections/shop-all"
             element={<ShopAll isLoggedIn={isLoggedIn} token={token} />}
           />
-          <Route path="/products/:id" element={<SingleProduct />} />
+          <Route
+            path="/products/:id"
+            element={<SingleProduct isLoggedIn={isLoggedIn} />}
+          />
           <Route
             path="/secure/login"
             element={<Login setIsLoggedIn={setIsLoggedIn} />}
@@ -61,7 +64,12 @@ function App() {
               <Logout setToken={setToken} setIsLoggedIn={setIsLoggedIn} />
             }
           />
-          <Route path="/secure/register" element={<Register />} />
+          <Route
+            path="/secure/register"
+            element={
+              <Register setToken={setToken} setIsLoggedIn={setIsLoggedIn} />
+            }
+          />
           <Route
             path="/account"
             element={<Account isLoggedIn={isLoggedIn} />}
