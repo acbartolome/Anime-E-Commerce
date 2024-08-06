@@ -28,7 +28,7 @@ img:hover {
 .product-image {
   width: auto;
   height: 200px;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .cartText {

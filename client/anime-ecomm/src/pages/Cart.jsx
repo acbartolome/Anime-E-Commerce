@@ -35,6 +35,7 @@ const Cart = ({ cart, setCart, isLoggedIn }) => {
         cart.map((item, index) => (
           <div key={index} className='cart-item'>
             <h3 className='item-name'>{item.name}</h3>
+            <img className='item-image' src={item.imageUrl} />
             <p className='item-description'>{item.description}</p>
             <p className='item-price'>Price: ${item.price}</p>
             <div className='item-controls'>
