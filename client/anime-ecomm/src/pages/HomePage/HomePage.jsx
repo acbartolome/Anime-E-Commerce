@@ -2,6 +2,9 @@ import React from "react";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+//how to import a image from the asset folder
+import logoOne from '../../assets/CR Store Slider - Desktop 2000 x 500 - SALE ANNOUNCEMENT - NONSUBS - 8_5.jpg';
+import logoTwo from '../../assets/US_2024 07_CRxLogicxCowboy Bebop WK1 + WK2_CR Store Assets-Store_Slide-Dtop-Product_Lay.jpg';
 
 // Carousel
 import Carousel from "react-bootstrap/Carousel";
@@ -19,7 +22,7 @@ const HomePage = () => {
             <Carousel.Item>
               <img
                 className="carouselPicture"
-                src="https://p325k7wa.twic.pics/high/jujutsu-kaisen/jujutsu-kaisen-cursed-clash/00-page-setup/JJK-header-mobile2.jpg?twic=v1/resize=760/step=10/quality=80"
+                src={logoOne}
               />
               <Carousel.Caption>
                 <h3>First slide label</h3>
@@ -31,7 +34,7 @@ const HomePage = () => {
             <Carousel.Item>
               <img
                 className="carouselPicture"
-                src="https://p325k7wa.twic.pics/high/jujutsu-kaisen/jujutsu-kaisen-cursed-clash/00-page-setup/JJK-header-mobile2.jpg?twic=v1/resize=760/step=10/quality=80"
+                src={logoTwo}
               />
               <Carousel.Caption>
                 <h3>Second slide label</h3>
@@ -54,6 +57,9 @@ const HomePage = () => {
           </Carousel>
         </Col>
         {/* <Col>Popular Items</Col> */}
+      </Row>
+      <Row>
+        <h1>EXPLORE OUR AMAZING SELECTION OF ANIME</h1>
       </Row>
       <Row>
         {/* include pictures of the 4 categories  */}
