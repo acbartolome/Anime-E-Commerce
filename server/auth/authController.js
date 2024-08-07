@@ -1,9 +1,9 @@
-require("dotenv").config(); //added from chatgpt
 const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const { JWT_SECRET_KEY } = process.env;
+require("dotenv").config();
 
 const register = async (req, res) => {
   const { name, email, password } = req.body;
@@ -103,6 +103,7 @@ const login = async (req, res) => {
     // }
   } catch (error) {
     console.log(error);
+    res.status(500).json({ message: "Internal Login Error" });
   }
 };
 

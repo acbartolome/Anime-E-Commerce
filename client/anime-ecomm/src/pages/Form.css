@@ -1,12 +1,23 @@
 .formParent {
-    display: grid;
-    justify-content: center;
-    background-color: white;
-    padding-top: 1.25rem;
-    width: 100%;
-    /* figure out styling so the background size adjust to form */
+  /* display: flex
+  justify-content: center;
+  background-color: white;
+  padding-top: 1.25rem;
+  width: 80%; */
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  margin: 20px auto;
+  padding-top: 50px;
+  padding-bottom: 20px;
+  flex-direction: column;
+  background-color: #fff;
+  border: 2px solid black;
+  border-radius: 20px;
 }
 
 .mb-3 {
-    width: 20rem;
+  width: 20rem;
 }

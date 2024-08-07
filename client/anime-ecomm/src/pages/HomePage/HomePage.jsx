@@ -2,7 +2,6 @@ import React from "react";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-//how to import a image from the asset folder
 import logoOne from '../../assets/CR Store Slider - Desktop 2000 x 500 - SALE ANNOUNCEMENT - NONSUBS - 8_5.jpg';
 import logoTwo from '../../assets/US_2024 07_CRxLogicxCowboy Bebop WK1 + WK2_CR Store Assets-Store_Slide-Dtop-Product_Lay.jpg';
 
