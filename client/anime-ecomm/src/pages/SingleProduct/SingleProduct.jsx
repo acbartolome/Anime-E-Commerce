@@ -6,7 +6,7 @@ import "./SingleProduct.css";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 
-const SingleProduct = () => {
+const SingleProduct = ({ cart, setCart, isLoggedIn }) => {
   const [product, setProduct] = useState([]);
   const [loading, setLoading] = useState(true);
   const { id } = useParams();
@@ -29,6 +29,9 @@ const SingleProduct = () => {
   }, [id]);
 
   // ----- handle logged in to add item to cart here ------
+  const handleAddToCart = () => {
+    setCart([...cart, product]);
+  }
 
   return (
     <>
