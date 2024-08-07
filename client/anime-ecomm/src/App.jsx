@@ -130,7 +130,7 @@
 // export default App;
 
 import React, { useEffect, useState } from "react";
-import { BrowserRouter as Router, Route, Routes, useNavigate } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import NavBar from "./components/NavBar";
@@ -157,18 +157,18 @@ function App() {
     localStorage.setItem('cart', JSON.stringify(cart));
   }, [cart]);
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
-  const handleLogout = () => {
-    setToken(null);
-    setIsLoggedIn(false);
-    localStorage.removeItem("token");
-    navigate('/');
-  };
+  // const handleLogout = () => {
+  //   setToken(null);
+  //   setIsLoggedIn(false);
+  //   localStorage.removeItem("token");
+  //   navigate('/');
+  // };
 
   return (
-    <div>
-      <NavBar isLoggedIn={isLoggedIn} handleLogout={handleLogout} />
+    <Router>
+      <NavBar isLoggedIn={isLoggedIn} />
       <Routes>
         <Route path="/" element={<HomePage isLoggedIn={isLoggedIn} token={token} />} />
         <Route path="/collections/shop-all" element={<ShopAll cart={cart} setCart={setCart} token={token} />} />
@@ -181,16 +181,16 @@ function App() {
         <Route path="/cart" element={<Cart cart={cart} setCart={setCart} isLoggedIn={isLoggedIn} />} />
         <Route path="/auth/admin-page" element={<AdminPage />} />
       </Routes>
-    </div>
-  );
-}
-
-function AppWrapper() {
-  return (
-    <Router>
-      <App />
     </Router>
   );
 }
 
-export default AppWrapper;
+// function AppWrapper() {
+//   return (
+//     <Router>
+//       <App />
+//     </Router>
+//   );
+// }
+
+export default App;
