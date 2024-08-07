@@ -163,12 +163,12 @@ function App() {
         <NavBar isLoggedIn={isLoggedIn} />
         <Routes>
           <Route path="/" element={<HomePage isLoggedIn={isLoggedIn} token={token} />} />
-          <Route path="/collections/shop-all" element={<ShopAll cart={cart} setCart={setCart} token={token} />} />
+          <Route path="/collections/shop-all" element={<ShopAll cart={cart} setCart={setCart} isLoggedIn={isLoggedIn} token={token} />} />
           <Route path="/products/:id" element={<SingleProduct cart={cart} setCart={setCart} isLoggedIn={isLoggedIn} />} />
           <Route path="/secure/login" element={<Login setIsLoggedIn={setIsLoggedIn} />} />
           <Route path="/logout" element={<Logout setIsLoggedIn={setIsLoggedIn} setToken={setToken} />} />
-          <Route path="/secure/register" element={<Register />} />
-          <Route path="/account" element={<Account token={token} cart={cart} />} />
+          <Route path="/secure/register" element={<Register setToken={setToken} setIsLoggedIn={setIsLoggedIn} />} />
+          <Route path="/account" element={<Account token={token} cart={cart} isLoggedIn={isLoggedIn} />} />
           <Route path="/account/order-history" element={<OrderHistory />} />
           <Route path="/cart" element={<Cart cart={cart} setCart={setCart} isLoggedIn={isLoggedIn} />} />
           <Route path="/auth/admin-page" element={<AdminPage />} />

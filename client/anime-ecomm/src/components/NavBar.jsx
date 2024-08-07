@@ -5,9 +5,9 @@ import Form from "react-bootstrap/Form";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
-import "./NavBar.css"
+import "./NavBar.css";
 
-const NavBar = ({ isLoggedIn }) => {
+const NavBar = ({ setToken, setIsLoggedIn, isLoggedIn }) => {
   // can you see this edit?
   // this is used to test if it works
   // const loggedIn = true;

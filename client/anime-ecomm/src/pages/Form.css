@@ -1,0 +1,12 @@
+.formParent {
+    display: grid;
+    justify-content: center;
+    background-color: white;
+    padding-top: 1.25rem;
+    width: 100%;
+    /* figure out styling so the background size adjust to form */
+}
+
+.mb-3 {
+    width: 20rem;
+}
