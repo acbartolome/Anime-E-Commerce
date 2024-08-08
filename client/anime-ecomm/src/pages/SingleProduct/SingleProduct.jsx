@@ -31,7 +31,7 @@ const SingleProduct = ({ cart, setCart, isLoggedIn }) => {
   // ----- handle logged in to add item to cart here ------
   const handleAddToCart = () => {
     setCart([...cart, product]);
-  }
+  };
 
   return (
     <>
@@ -43,11 +43,22 @@ const SingleProduct = ({ cart, setCart, isLoggedIn }) => {
             <Card className="product-card" style={{ width: "18rem" }}>
               <Card.Img variant="top" src={product.imageUrl} />
               <Card.Body>
-                <Card.Title className="product-title">{product.name}</Card.Title>
-                <Card.Text className="product-description">${product.price}</Card.Text>
-                <Card.Text className="product-description">{product.description}</Card.Text>
-                <Button variant="primary">Add to cart</Button>
-                <Button variant="secondary">Return home</Button>
+                <Card.Title className="product-title">
+                  {product.name}
+                </Card.Title>
+                <Card.Text className="product-description">
+                  ${product.price}
+                </Card.Text>
+                <Card.Text className="product-description">
+                  {product.description}
+                </Card.Text>
+                <Button className="addToCart" variant="primary">
+                  Add to cart
+                </Button>
+                <br />
+                <Button className="returnHome" variant="secondary">
+                  Return home
+                </Button>
               </Card.Body>
             </Card>
           )}

@@ -16,29 +16,75 @@ import SingleProduct from "./pages/SingleProduct/SingleProduct";
 function App() {
   const [token, setToken] = useState(localStorage.getItem("token") || null);
   const [isLoggedIn, setIsLoggedIn] = useState(!!token);
+  const [id, setId] = useState(null);
   const [cart, setCart] = useState(() => {
-    const savedCart = localStorage.getItem('cart');
+    const savedCart = localStorage.getItem("cart");
     return savedCart ? JSON.parse(savedCart) : [];
   });
 
   useEffect(() => {
-    localStorage.setItem('cart', JSON.stringify(cart));
+    localStorage.setItem("cart", JSON.stringify(cart));
   }, [cart]);
 
   return (
     <>
       <Router>
-        <NavBar isLoggedIn={isLoggedIn} />
+        <NavBar isLoggedIn={isLoggedIn} id={id} />
         <Routes>
-          <Route path="/" element={<HomePage isLoggedIn={isLoggedIn} token={token} />} />
-          <Route path="/collections/shop-all" element={<ShopAll cart={cart} setCart={setCart} isLoggedIn={isLoggedIn} token={token} />} />
-          <Route path="/products/:id" element={<SingleProduct cart={cart} setCart={setCart} isLoggedIn={isLoggedIn} />} />
-          <Route path="/secure/login" element={<Login setIsLoggedIn={setIsLoggedIn} />} />
-          <Route path="/logout" element={<Logout setIsLoggedIn={setIsLoggedIn} setToken={setToken} />} />
-          <Route path="/secure/register" element={<Register setToken={setToken} setIsLoggedIn={setIsLoggedIn} />} />
-          <Route path="/account" element={<Account token={token} cart={cart} isLoggedIn={isLoggedIn} />} />
+          <Route
+            path="/"
+            element={<HomePage isLoggedIn={isLoggedIn} token={token} />}
+          />
+          <Route
+            path="/collections/shop-all"
+            element={
+              <ShopAll
+                cart={cart}
+                setCart={setCart}
+                isLoggedIn={isLoggedIn}
+                token={token}
+              />
+            }
+          />
+          <Route
+            path="/products/:id"
+            element={
+              <SingleProduct
+                cart={cart}
+                setCart={setCart}
+                isLoggedIn={isLoggedIn}
+              />
+            }
+          />
+          <Route
+            path="/secure/login"
+            element={<Login setIsLoggedIn={setIsLoggedIn} setId={setId} />}
+          />
+          <Route
+            path="/logout"
+            element={
+              <Logout setIsLoggedIn={setIsLoggedIn} setToken={setToken} />
+            }
+          />
+          <Route
+            path="/secure/register"
+            element={
+              <Register setToken={setToken} setIsLoggedIn={setIsLoggedIn} />
+            }
+          />
+          <Route
+            path="/account/:id"
+            element={
+              <Account token={token} cart={cart} isLoggedIn={isLoggedIn} />
+            }
+          />
           <Route path="/account/order-history" element={<OrderHistory />} />
-          <Route path="/cart" element={<Cart cart={cart} setCart={setCart} isLoggedIn={isLoggedIn} />} />
+          <Route
+            path="/cart"
+            element={
+              <Cart cart={cart} setCart={setCart} isLoggedIn={isLoggedIn} />
+            }
+          />
           <Route path="/auth/admin-page" element={<AdminPage />} />
         </Routes>
       </Router>
