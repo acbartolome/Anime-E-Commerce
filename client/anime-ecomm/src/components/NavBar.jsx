@@ -7,7 +7,7 @@ import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import "./NavBar.css";
 
-const NavBar = ({ setToken, setIsLoggedIn, isLoggedIn }) => {
+const NavBar = ({ setToken, setIsLoggedIn, isLoggedIn, id }) => {
   // can you see this edit?
   // this is used to test if it works
   // const loggedIn = true;
@@ -51,7 +51,7 @@ const NavBar = ({ setToken, setIsLoggedIn, isLoggedIn }) => {
                 ) : (
                   <Nav>
                     <NavDropdown title="User" id="navbarScrollingDropdown">
-                      <NavDropdown.Item href="/account">
+                      <NavDropdown.Item href={`/account/${id}`}>
                         My Account
                       </NavDropdown.Item>
                       <NavDropdown.Item href="/account/order-history">

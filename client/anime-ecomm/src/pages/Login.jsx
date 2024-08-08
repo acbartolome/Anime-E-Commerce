@@ -8,13 +8,13 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 
-const Login = ({ setIsLoggedIn }) => {
+const Login = ({ setIsLoggedIn, setId }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
   // will add login functionality after API route is created
-  // LOGIN NOT WORKING REVIEW LATER!!!
+
   const handleLogin = async (event) => {
     event.preventDefault();
     const loginObject = { email, password };
@@ -26,8 +26,9 @@ const Login = ({ setIsLoggedIn }) => {
       });
       if (response.ok) {
         const data = await response.json();
-        console.log("DATA", data.token);
+        console.log("DATA", data);
         localStorage.setItem("token", data.token);
+        setId(data.id);
         setIsLoggedIn(true);
         alert("Successfully Logged in");
       } else {

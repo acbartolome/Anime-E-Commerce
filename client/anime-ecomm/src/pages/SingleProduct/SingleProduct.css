@@ -26,3 +26,17 @@
   font-size: 16px; /* Change to your desired font size */
   color: #555; /* Optional: change the text color */
 }
+
+.addToCart {
+  background-color: #79B791;
+  margin-bottom: 1vh;
+}
+
+.addToCart:hover {
+  background-color: #FEFFEA;
+  color: black;
+}
+
+.returnHome {
+  background-color: #FA9F42;
+}
