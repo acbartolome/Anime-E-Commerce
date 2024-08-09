@@ -31,6 +31,9 @@ const Login = ({ setIsLoggedIn, setId }) => {
         setId(data.id);
         setIsLoggedIn(true);
         alert("Successfully Logged in");
+        setEmail("");
+        setPassword("");
+        navigate("/");
       } else {
         console.error("Error logging in");
       }

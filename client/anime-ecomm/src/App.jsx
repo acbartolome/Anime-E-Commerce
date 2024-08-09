@@ -69,7 +69,11 @@ function App() {
           <Route
             path="/secure/register"
             element={
-              <Register setToken={setToken} setIsLoggedIn={setIsLoggedIn} />
+              <Register
+                setToken={setToken}
+                setIsLoggedIn={setIsLoggedIn}
+                setId={setId}
+              />
             }
           />
           <Route
