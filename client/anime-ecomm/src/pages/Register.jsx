@@ -8,7 +8,9 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 
-const Register = ({ setToken, setIsLoggedIn }) => {
+// make sure to reference ID and check backend and make it similar to login !!!!
+
+const Register = ({ setToken, setIsLoggedIn, setId }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -27,7 +29,10 @@ const Register = ({ setToken, setIsLoggedIn }) => {
       const data = await response.json();
       console.log("Register data", data);
       localStorage.setItem("token", data.token);
+      setId(data.user.id);
       setIsLoggedIn(true);
+      console.log("USER?", data.user);
+      console.log("USER ID?", data.user.id);
       console.log("token!", data.token);
       alert("Successfully created an account");
       setName("");
