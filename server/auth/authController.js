@@ -39,7 +39,9 @@ const register = async (req, res) => {
         expiresIn: "60m",
       }
     );
-    res.status(201).send({ user, token });
+    res
+      .status(201)
+      .send({ user, token, message: "Account successfully created" });
   } catch (error) {
     console.log(error);
     res.status(500).json({ message: "Internal Register Error" });
@@ -85,7 +87,9 @@ const login = async (req, res) => {
     );
 
     console.log(token);
-    res.status(200).send({ token, message: "Successfully logged in." });
+    res
+      .status(200)
+      .send({ token, message: "Successfully logged in.", id: user.id });
 
     //STEP2 : Alternate in finding user and password
     // if (user && bcrypt.compare(password, user.password)) {
