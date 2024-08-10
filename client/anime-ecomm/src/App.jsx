@@ -17,6 +17,7 @@ function App() {
   const [token, setToken] = useState(localStorage.getItem("token") || null);
   const [isLoggedIn, setIsLoggedIn] = useState(!!token);
   const [id, setId] = useState(null);
+  const [admin, setAdmin] = useState(false);
   const [cart, setCart] = useState(() => {
     const savedCart = localStorage.getItem("cart");
     return savedCart ? JSON.parse(savedCart) : [];
@@ -29,7 +30,7 @@ function App() {
   return (
     <>
       <Router>
-        <NavBar isLoggedIn={isLoggedIn} id={id} />
+        <NavBar isLoggedIn={isLoggedIn} id={id} admin={admin} />
         <Routes>
           <Route
             path="/"
@@ -58,7 +59,13 @@ function App() {
           />
           <Route
             path="/secure/login"
-            element={<Login setIsLoggedIn={setIsLoggedIn} setId={setId} />}
+            element={
+              <Login
+                setIsLoggedIn={setIsLoggedIn}
+                setId={setId}
+                setAdmin={setAdmin}
+              />
+            }
           />
           <Route
             path="/logout"
@@ -73,6 +80,7 @@ function App() {
                 setToken={setToken}
                 setIsLoggedIn={setIsLoggedIn}
                 setId={setId}
+                setAdmin={setAdmin}
               />
             }
           />
@@ -89,7 +97,10 @@ function App() {
               <Cart cart={cart} setCart={setCart} isLoggedIn={isLoggedIn} />
             }
           />
-          <Route path="/auth/admin-page" element={<AdminPage />} />
+          <Route
+            path="/auth/admin-page"
+            element={<AdminPage admin={admin} isLoggedIn={isLoggedIn} />}
+          />
         </Routes>
       </Router>
     </>

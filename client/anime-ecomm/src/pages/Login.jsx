@@ -8,7 +8,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 
-const Login = ({ setIsLoggedIn, setId }) => {
+const Login = ({ setIsLoggedIn, setId, setAdmin }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
@@ -29,7 +29,9 @@ const Login = ({ setIsLoggedIn, setId }) => {
         console.log("DATA", data);
         localStorage.setItem("token", data.token);
         setId(data.id);
+        setAdmin(data.admin);
         setIsLoggedIn(true);
+        console.log("ADMIN", data.admin);
         alert("Successfully Logged in");
         setEmail("");
         setPassword("");
