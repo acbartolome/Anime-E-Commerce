@@ -156,7 +156,7 @@ const AdminPage = (admin, isLoggedIn) => {
 
   const handleCreateAndClose = async () => {
     handleCreateProduct();
-    handleClose();
+    handleCreateClose();
   };
 
   //.. add functionality for handleViewDetails here ------
@@ -304,9 +304,11 @@ const AdminPage = (admin, isLoggedIn) => {
                 <Form.Label>Price</Form.Label>
                 <Form.Control
                   type="number"
+                  step="0.01"
+                  min="0"
                   placeholder="Price"
                   onChange={(event) => {
-                    setPrice(event.target.value);
+                    setPrice(parseFloat(event.target.value));
                   }}
                 />
                 <Form.Label>Image url</Form.Label>
@@ -330,7 +332,7 @@ const AdminPage = (admin, isLoggedIn) => {
                   type="number"
                   placeholder="Stock"
                   onChange={(event) => {
-                    setStock(event.target.value);
+                    setStock(parseInt(event.target.value));
                   }}
                 />
               </Form.Group>
