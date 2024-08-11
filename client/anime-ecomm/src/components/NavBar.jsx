@@ -7,7 +7,7 @@ import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import "./NavBar.css";
 
-const NavBar = ({ setToken, setIsLoggedIn, isLoggedIn, id }) => {
+const NavBar = ({ setToken, setIsLoggedIn, isLoggedIn, id, admin }) => {
   // can you see this edit?
   // this is used to test if it works
   // const loggedIn = true;
@@ -61,13 +61,13 @@ const NavBar = ({ setToken, setIsLoggedIn, isLoggedIn, id }) => {
                       <NavDropdown.Divider />
                       {/* Need to figure out how to add this so it doesn't have a
                       blank page */}
-                      {/* {!admin ? (
+                      {!admin ? (
                         <div />
                       ) : (
                         <NavDropdown.Item href="/auth/admin-page">
-                          Admin Page
+                          Admin Dashboard
                         </NavDropdown.Item>
-                      )} */}
+                      )}
                       {/* {admin && (
                         <NavDropdown.Item href="/auth/admin-page">
                           Admin Page

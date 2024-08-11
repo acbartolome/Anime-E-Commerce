@@ -89,7 +89,12 @@ const login = async (req, res) => {
     console.log(token);
     res
       .status(200)
-      .send({ token, message: "Successfully logged in.", id: user.id });
+      .send({
+        token,
+        message: "Successfully logged in.",
+        id: user.id,
+        admin: user.admin,
+      });
 
     //STEP2 : Alternate in finding user and password
     // if (user && bcrypt.compare(password, user.password)) {

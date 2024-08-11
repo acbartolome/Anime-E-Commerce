@@ -4,6 +4,9 @@ const {
   getAllProduct,
   getSingleProduct,
   getProductByCategory,
+  createProduct,
+  editProduct,
+  deleteProduct,
 } = require("../controllers/productController");
 
 //view all product as user and admin
@@ -20,19 +23,14 @@ router.patch("/:id", (req, res) => {
 //admin specific
 //able to create a product
 //tokenAuth for the admin to be verified
-router.post("/", (req, res) => {
-  console.log("admin post product");
-});
+router.post("/", createProduct);
 
 //update the product by patch
-router.put("/:id", (req, res) => {
-  console.log("admin update product");
-});
+// updated to patch so we can edit inventory number
+router.patch("/:id", editProduct);
 
 //delete the product by delete
-router.delete("/:id", (req, res) => {
-  console.log("admin deleted product");
-});
+router.delete("/:id", deleteProduct);
 // this portion of the code doesn't work since the route expects an "id"
 // adding "/category/:category" resolves the issue so get request works
 //get items by category instead of id
