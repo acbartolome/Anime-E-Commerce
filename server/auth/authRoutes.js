@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const { register, login } = require("../auth/authController");
 const { getSingleUser } = require("../controllers/userController");
-const { JWT_SECRET_KEY } = process.env;
+// const { JWT_SECRET_KEY } = process.env;
 
 const requireUser = async (req, res, next) => {
   //check to see if there is a token already

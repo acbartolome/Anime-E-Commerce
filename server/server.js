@@ -6,6 +6,8 @@ const productRoute = require("./routes/productRoutes");
 const cartRoute = require("./routes/cartRoutes");
 const orderHistoryRoute = require("./routes/orderHistoryRoutes");
 const registerRoute = require("./auth/authRoutes");
+const checkoutRoute = require("./routes/checkout");
+require("dotenv").config();
 
 const app = express();
 app.use(express.json());
@@ -21,7 +23,7 @@ app.use("/users", userRoute);
 app.use("/product", productRoute);
 app.use("/cart", cartRoute);
 app.use("/orderhistory", orderHistoryRoute);
-
+app.use("/account/checkout", checkoutRoute);
 app.use("/auth", registerRoute);
 
 // app.use("/logout")
