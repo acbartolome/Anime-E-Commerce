@@ -30,7 +30,7 @@ function App() {
   return (
     <>
       <Router>
-        <NavBar isLoggedIn={isLoggedIn} id={id} admin={admin} />
+        <NavBar isLoggedIn={isLoggedIn} id={id} admin={admin} token={token} />
         <Routes>
           <Route
             path="/"
@@ -54,6 +54,7 @@ function App() {
                 cart={cart}
                 setCart={setCart}
                 isLoggedIn={isLoggedIn}
+                token={token}
               />
             }
           />
@@ -90,16 +91,26 @@ function App() {
               <Account token={token} cart={cart} isLoggedIn={isLoggedIn} />
             }
           />
-          <Route path="/account/order-history" element={<OrderHistory />} />
+          <Route
+            path="/account/order-history"
+            element={<OrderHistory token={token} />}
+          />
           <Route
             path="/cart"
             element={
-              <Cart cart={cart} setCart={setCart} isLoggedIn={isLoggedIn} />
+              <Cart
+                cart={cart}
+                setCart={setCart}
+                isLoggedIn={isLoggedIn}
+                token={token}
+              />
             }
           />
           <Route
             path="/auth/admin-page"
-            element={<AdminPage admin={admin} isLoggedIn={isLoggedIn} />}
+            element={
+              <AdminPage admin={admin} isLoggedIn={isLoggedIn} token={token} />
+            }
           />
         </Routes>
       </Router>
