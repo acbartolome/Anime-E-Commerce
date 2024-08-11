@@ -55,8 +55,16 @@ const getProductByCategory = async (req, res) => {
 // add another parameter that allows for only admins
 const createProduct = async (req, res) => {
   try {
-    const newProduct = prisma.product.create({
-      data: req.body,
+    const { name, description, price, imageUrl, category, stock } = req.body;
+    const newProduct = await prisma.product.create({
+      data: {
+        name,
+        description,
+        price,
+        imageUrl,
+        category,
+        stock,
+      },
     });
     res.status(201).send(newProduct);
   } catch (error) {
