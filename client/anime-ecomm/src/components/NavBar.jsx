@@ -8,10 +8,7 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 import "./NavBar.css";
 
 const NavBar = ({ setToken, setIsLoggedIn, isLoggedIn, id, admin }) => {
-  // can you see this edit?
-  // this is used to test if it works
-  // const loggedIn = true;
-  // const admin = true;
+  console.log("ADMIN STATUS", admin);
   return (
     <>
       {/* "bg-body-tertiary"  - place that inside of your <Navbar> className. */}
@@ -61,6 +58,7 @@ const NavBar = ({ setToken, setIsLoggedIn, isLoggedIn, id, admin }) => {
                       <NavDropdown.Divider />
                       {/* Need to figure out how to add this so it doesn't have a
                       blank page */}
+
                       {!admin ? (
                         <div />
                       ) : (
@@ -68,11 +66,6 @@ const NavBar = ({ setToken, setIsLoggedIn, isLoggedIn, id, admin }) => {
                           Admin Dashboard
                         </NavDropdown.Item>
                       )}
-                      {/* {admin && (
-                        <NavDropdown.Item href="/auth/admin-page">
-                          Admin Page
-                        </NavDropdown.Item>
-                      )} */}
                     </NavDropdown>
                     <Nav.Link href="/cart">Cart</Nav.Link>
                   </Nav>

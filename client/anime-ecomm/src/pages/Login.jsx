@@ -28,8 +28,8 @@ const Login = ({ setIsLoggedIn, setId, setAdmin }) => {
         const data = await response.json();
         console.log("DATA", data);
         localStorage.setItem("token", data.token);
-        setId(data.id);
-        setAdmin(data.admin);
+        localStorage.setItem("id", data.id);
+        localStorage.setItem("admin", data.admin);
         setIsLoggedIn(true);
         console.log("ADMIN", data.admin);
         alert("Successfully Logged in");
