@@ -1,7 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useParams } from "react-router-dom";
 
 import Table from "react-bootstrap/Table";
 import { Button } from "react-bootstrap";
@@ -17,10 +16,8 @@ import Modal from "react-bootstrap/Modal";
 const AdminPage = (admin, isLoggedIn) => {
   const [users, setUsers] = useState([]);
   const [products, setProducts] = useState([]);
-  // const [product, setProduct] = useState([]);
   const navigate = useNavigate();
-  const { id } = useParams();
-  // create product useState
+
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
@@ -28,11 +25,14 @@ const AdminPage = (admin, isLoggedIn) => {
   const [category, setCategory] = useState("");
   const [stock, setStock] = useState("");
 
-  const [show, setShow] = useState(false);
+  // test this
+  // const [productId, setProductId] = useState("");
+
+  const [show, setShow] = useState({});
   const [showcreate, setShowCreate] = useState(false);
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const handleClose = (id) => setShow({ [id]: false });
+  const handleShow = (id) => setShow({ [id]: true });
   const handleCreateClose = () => setShowCreate(false);
   const handleCreateShow = () => setShowCreate(true);
 
@@ -70,7 +70,7 @@ const AdminPage = (admin, isLoggedIn) => {
       }
     };
     fetchProducts();
-  }, [admin, id]);
+  }, [admin]);
 
   // create products
   const handleCreateProduct = async (event) => {
@@ -99,9 +99,12 @@ const AdminPage = (admin, isLoggedIn) => {
       console.error("Opps, something went wrong when creating a product");
     }
   };
+
   // edit products
   // GETTING ERROR MESSAGE WHEN ATTEMPTING TO EDIT PRODUCT REACHING THE CATCH
-  const handleEditProduct = async () => {
+  // not capturing product ID which is why there is an error
+  // Similar to single products make a admin single product to make edits/delete product?
+  const handleEditProduct = async (id) => {
     try {
       if (admin) {
         console.log("Hit");
@@ -131,38 +134,33 @@ const AdminPage = (admin, isLoggedIn) => {
   };
 
   // delete products
-  const handleDeleteProduct = async (event) => {
-    // event.preventDefault();
+  // same with edit not capturing the product ID to delete the products
+  const handleDeleteProduct = async (id) => {
     try {
       if (admin) {
         const response = await fetch(`http://localhost:3000/product/${id}`, {
           method: "DELETE",
-          headers: {
-            "Content-Type": "application/json",
-          },
         });
-        const data = await response.json();
         alert("You have deleted a product");
+        location.reload();
       }
     } catch (error) {
       console.error("There was an issue deleting a product", error);
     }
   };
 
-  const handleEditAndClose = async () => {
-    handleEditProduct();
-    handleClose();
+  const handleEditAndClose = async (id) => {
+    handleEditProduct(id);
+    handleClose(id);
+    window.location.reload();
   };
 
   const handleCreateAndClose = async () => {
     handleCreateProduct();
     handleCreateClose();
+    window.location.reload();
   };
 
-  //.. add functionality for handleViewDetails here ------
-  // const handleViewDetails = (productId) => {
-  //   navigate(`/products/${productId}`);
-  // };
   return (
     <>
       {/*USER DATA*/}
@@ -214,52 +212,146 @@ const AdminPage = (admin, isLoggedIn) => {
             </Button>
           </Col>
         </Row>
-        <Row>
+        <Row style={{ display: "flex" }}>
           {products?.map((product) => (
-            <Col
-              key={product.id}
-              xs={6}
-              sm={4}
-              md={3}
-              lg={3}
-              className="mb-4 mt-4 text-center"
-            >
-              <Card key={product.id} style={{ width: "100%", height: "100%" }}>
-                <Card.Img
-                  onClick={() => navigate(`/products/${product.id}`)}
-                  variant="top"
-                  src={product.imageUrl}
-                  className="product-image"
-                />
-                <Card.Body>
-                  <Card.Title>{product.name}</Card.Title>
-                  <Card.Text className="cartText">${product.price}</Card.Text>
-                  <Card.Text className="cartText">
-                    {product.description}
-                  </Card.Text>
-                  <Card.Text className="cartText">
-                    Category: {product.category}
-                  </Card.Text>
-                  <Card.Text className="cartText">
-                    Stock: {product.stock}
-                  </Card.Text>
+            <>
+              <Col
+                xs={6}
+                sm={4}
+                md={3}
+                lg={3}
+                className="mb-4 mt-4 text-center"
+              >
+                <Card
+                  key={product.id}
+                  style={{ width: "100%", height: "100%" }}
+                >
+                  <Card.Img
+                    onClick={() => navigate(`/products/${product.id}`)}
+                    variant="top"
+                    src={product.imageUrl}
+                    className="product-image"
+                  />
+                  <Card.Body>
+                    <Card.Title>{product.name}</Card.Title>
+                    <Card.Text className="cartText">${product.price}</Card.Text>
+                    <Card.Text className="cartText">
+                      {product.description}
+                    </Card.Text>
+                    <Card.Text className="cartText">
+                      Category: {product.category}
+                    </Card.Text>
+                    <Card.Text className="cartText">
+                      Stock: {product.stock}
+                    </Card.Text>
+                    <Button
+                      variant="primary"
+                      className="button"
+                      onClick={() => handleShow(product.id)}
+                    >
+                      Edit
+                    </Button>
+                    <Button
+                      variant="primary"
+                      className="button"
+                      onClick={() => handleDeleteProduct(product.id)}
+                    >
+                      Delete
+                    </Button>
+                  </Card.Body>
+                </Card>
+              </Col>
+
+              <Modal
+                show={show[product.id]}
+                onHide={() => handleClose(product.id)}
+              >
+                <Modal.Header closeButton>
+                  <Modal.Title>Edit info</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                  <Form>
+                    <Form.Group
+                      className="mb-3"
+                      controlId="exampleForm.ControlInput1"
+                    >
+                      <Form.Label>Name</Form.Label>
+                      <Form.Control
+                        type="text"
+                        placeholder="Name"
+                        onChange={(event) => {
+                          setName(event.target.value);
+                        }}
+                      />
+                    </Form.Group>
+                    <Form.Group
+                      className="mb-3"
+                      controlId="exampleForm.ControlInput1"
+                    >
+                      <Form.Label>Description</Form.Label>
+                      <Form.Control
+                        type="text"
+                        placeholder="Description"
+                        onChange={(event) => {
+                          setDescription(event.target.value);
+                        }}
+                      />
+                    </Form.Group>
+                    <Form.Group
+                      className="mb-3"
+                      controlId="exampleForm.ControlInput1"
+                    >
+                      <Form.Label>Price</Form.Label>
+                      <Form.Control
+                        type="number"
+                        placeholder="Price"
+                        onChange={(event) => {
+                          setPrice(parseFloat(event.target.value));
+                        }}
+                      />
+                      <Form.Label>Image url</Form.Label>
+                      <Form.Control
+                        type="url"
+                        placeholder="url"
+                        onChange={(event) => {
+                          setImageUrl(event.target.value);
+                        }}
+                      />
+                      <Form.Label>Category</Form.Label>
+                      <Form.Control
+                        type="text"
+                        placeholder="Category"
+                        onChange={(event) => {
+                          setCategory(event.target.value);
+                        }}
+                      />
+                      <Form.Label>Stock</Form.Label>
+                      <Form.Control
+                        type="number"
+                        placeholder="Stock"
+                        onChange={(event) => {
+                          setStock(parseInt(event.target.value));
+                        }}
+                      />
+                    </Form.Group>
+                  </Form>
+                </Modal.Body>
+                <Modal.Footer>
                   <Button
-                    variant="primary"
-                    className="button"
-                    onClick={() => handleShow(product.id)}
+                    variant="secondary"
+                    onClick={() => handleClose(product.id)}
                   >
-                    Edit
+                    Close
                   </Button>
                   <Button
                     variant="primary"
-                    className="button"
-                    onClick={handleDeleteProduct}
+                    onClick={() => handleEditAndClose(product.id)}
                   >
-                    Delete
+                    Save Changes
                   </Button>
-                </Card.Body>
-              </Card>
-            </Col>
+                </Modal.Footer>
+              </Modal>
+            </>
           ))}
         </Row>
       </Container>
@@ -344,90 +436,6 @@ const AdminPage = (admin, isLoggedIn) => {
             </Button>
             <Button variant="primary" onClick={handleCreateAndClose}>
               Add Product
-            </Button>
-          </Modal.Footer>
-        </Modal>
-      </div>
-
-      {/* {HANDLE EDIT MODAL} */}
-      <div>
-        <Modal show={show} onHide={handleClose}>
-          <Modal.Header closeButton>
-            <Modal.Title>Edit info</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            <Form>
-              <Form.Group
-                className="mb-3"
-                controlId="exampleForm.ControlInput1"
-              >
-                <Form.Label>Name</Form.Label>
-                <Form.Control
-                  type="text"
-                  placeholder="Name"
-                  onChange={(event) => {
-                    setName(event.target.value);
-                  }}
-                />
-              </Form.Group>
-              <Form.Group
-                className="mb-3"
-                controlId="exampleForm.ControlInput1"
-              >
-                <Form.Label>Description</Form.Label>
-                <Form.Control
-                  type="text"
-                  placeholder="Description"
-                  onChange={(event) => {
-                    setDescription(event.target.value);
-                  }}
-                />
-              </Form.Group>
-              <Form.Group
-                className="mb-3"
-                controlId="exampleForm.ControlInput1"
-              >
-                <Form.Label>Price</Form.Label>
-                <Form.Control
-                  type="number"
-                  placeholder="Price"
-                  onChange={(event) => {
-                    setPrice(event.target.value);
-                  }}
-                />
-                <Form.Label>Image url</Form.Label>
-                <Form.Control
-                  type="url"
-                  placeholder="url"
-                  onChange={(event) => {
-                    setImageUrl(event.target.value);
-                  }}
-                />
-                <Form.Label>Category</Form.Label>
-                <Form.Control
-                  type="text"
-                  placeholder="Category"
-                  onChange={(event) => {
-                    setCategory(event.target.value);
-                  }}
-                />
-                <Form.Label>Stock</Form.Label>
-                <Form.Control
-                  type="number"
-                  placeholder="Stock"
-                  onChange={(event) => {
-                    setStock(event.target.value);
-                  }}
-                />
-              </Form.Group>
-            </Form>
-          </Modal.Body>
-          <Modal.Footer>
-            <Button variant="secondary" onClick={handleClose}>
-              Close
-            </Button>
-            <Button variant="primary" onClick={handleEditAndClose}>
-              Save Changes
             </Button>
           </Modal.Footer>
         </Modal>
