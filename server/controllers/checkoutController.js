@@ -57,11 +57,13 @@ const checkout = async (req, res) => {
 // Save order details after successful payment (this is typically called after payment is confirmed)
 const saveOrder = async (req, res) => {
   const { userId, cart } = req.body;
+  console.log(userId);
   try {
     const order = await prisma.orderHistory.create({
       data: {
         userId,
-        cart: cart, // You can customize what details you want to save
+        User: {},
+        history: [{ userId, order: cart }], // You. can customize what details you want to save
         createdAt: new Date(),
       },
     });
