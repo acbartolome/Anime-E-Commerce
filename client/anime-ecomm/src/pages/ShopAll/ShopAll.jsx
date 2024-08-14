@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import "./ShopAll.css";
 
-import Col from 'react-bootstrap/Col';
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
+import Col from "react-bootstrap/Col";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 
@@ -36,8 +36,7 @@ const ShopAll = ({ cart, setCart }) => {
   // ----- handle logged in to add item to cart here ------
   const handleAddToCart = (product) => {
     setCart([...cart, product]);
-  }
-
+  };
 
   //.. add functionality for handleViewDetails here ------
   const handleViewDetails = (productId) => {
@@ -50,7 +49,6 @@ const ShopAll = ({ cart, setCart }) => {
         <h1>Loading items....</h1>
       ) : (
         <Container fluid>
-
           <Row>
             <Col className="header_title">
               <h1>{category ? category : "Shop All"}</h1>
@@ -59,19 +57,39 @@ const ShopAll = ({ cart, setCart }) => {
 
           <Row>
             {products?.map((product) => (
-              <Col key={product.id} xs={6} sm={4} md={3} lg={3} className="mb-4 mt-4 text-center">
+              <Col
+                key={product.id}
+                xs={6}
+                sm={4}
+                md={3}
+                lg={3}
+                className="mb-4 mt-4 text-center"
+              >
                 <Card style={{ width: "100%", height: "100%" }}>
                   <Card.Img
                     onClick={() => navigate(`/products/${product.id}`)}
                     variant="top"
                     src={product.imageUrl}
                     className="product-image"
+                    alt={product.name}
                   />
                   <Card.Body>
                     <Card.Title>{product.name}</Card.Title>
                     <Card.Text className="cartText">${product.price}</Card.Text>
-                    <Button variant="primary" className="button" onClick={() => handleViewDetails(product.id)}>View details</Button>
-                    <Button variant="success" className="button" onClick={() => handleAddToCart(product)}>Add to Cart</Button>
+                    <Button
+                      variant="primary"
+                      className="button"
+                      onClick={() => handleViewDetails(product.id)}
+                    >
+                      View details
+                    </Button>
+                    <Button
+                      variant="success"
+                      className="button"
+                      onClick={() => handleAddToCart(product)}
+                    >
+                      Add to Cart
+                    </Button>
                   </Card.Body>
                 </Card>
               </Col>

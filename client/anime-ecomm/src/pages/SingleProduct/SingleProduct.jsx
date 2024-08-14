@@ -33,6 +33,10 @@ const SingleProduct = ({ cart, setCart, isLoggedIn }) => {
     setCart([...cart, product]);
   };
 
+  const handleReturnHome = () => {
+    navigate("/");
+  };
+
   return (
     <>
       {loading ? (
@@ -56,7 +60,11 @@ const SingleProduct = ({ cart, setCart, isLoggedIn }) => {
                   Add to cart
                 </Button>
                 <br />
-                <Button className="returnHome" variant="secondary">
+                <Button
+                  className="returnHome"
+                  variant="secondary"
+                  onClick={handleReturnHome}
+                >
                   Return home
                 </Button>
               </Card.Body>
