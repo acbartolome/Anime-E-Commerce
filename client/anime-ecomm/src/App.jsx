@@ -12,6 +12,9 @@ import OrderHistory from "./pages/OrderHistory";
 import Register from "./pages/Register";
 import ShopAll from "./pages/ShopAll/ShopAll";
 import SingleProduct from "./pages/SingleProduct/SingleProduct";
+import Checkout from "./components/Checkout";
+
+
 
 function App() {
   const [token, setToken] = useState(localStorage.getItem("token") || null);
@@ -35,16 +38,12 @@ function App() {
             path="/"
             element={<HomePage isLoggedIn={isLoggedIn} token={token} />}
           />
-          <Route
-            path="/collections/shop-all"
-            element={
-              <ShopAll
-                cart={cart}
-                setCart={setCart}
-                isLoggedIn={isLoggedIn}
-                token={token}
-              />
-            }
+          <Route path="/collections/shop-all" element={<ShopAll cart={cart}
+            setCart={setCart}
+            isLoggedIn={isLoggedIn}
+            token={token}
+          />
+          }
           />
           <Route
             path="/products/:id"
@@ -58,7 +57,7 @@ function App() {
           />
           <Route
             path="/secure/login"
-            element={<Login setIsLoggedIn={setIsLoggedIn} setId={setId} />}
+            element={<Login setIsLoggedIn={setIsLoggedIn} setId={setId} setCart={setCart} />}
           />
           <Route
             path="/logout"
@@ -78,13 +77,14 @@ function App() {
               <Account token={token} cart={cart} isLoggedIn={isLoggedIn} />
             }
           />
-          <Route path="/account/order-history" element={<OrderHistory />} />
+          <Route path="/account/order-history" element={<OrderHistory userId={id} />} />
           <Route
             path="/cart"
             element={
               <Cart cart={cart} setCart={setCart} isLoggedIn={isLoggedIn} />
             }
           />
+          <Route path="/checkout" element={<Checkout cart={cart} id={id} setCart={setCart} />} />
           <Route path="/auth/admin-page" element={<AdminPage />} />
         </Routes>
       </Router>
