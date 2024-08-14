@@ -16,9 +16,9 @@ router.get("/", getAllProduct);
 router.get("/:id", getSingleProduct);
 
 //add product to cart
-router.patch("/:id", (req, res) => {
-  console.log("add to cart");
-});
+// router.patch("/:id", (req, res) => {
+//   console.log("add to cart");
+// });
 
 //admin specific
 //able to create a product
