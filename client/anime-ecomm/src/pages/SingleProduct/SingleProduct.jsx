@@ -60,7 +60,7 @@ const SingleProduct = ({ cart, setCart, isLoggedIn }) => {
                 <Card.Text className="product-description">
                   {product.description}
                 </Card.Text>
-                <Button className="addToCart" variant="primary">
+                <Button type="button" className="addToCart" variant="primary">
                   Add to cart
                 </Button>
                 <br />
