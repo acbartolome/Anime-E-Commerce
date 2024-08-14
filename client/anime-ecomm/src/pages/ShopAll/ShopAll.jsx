@@ -46,7 +46,7 @@ const ShopAll = ({ cart, setCart }) => {
   return (
     <>
       {loading ? (
-        <h1>Loading items....</h1>
+        loading && <p>Loading items....</p>
       ) : (
         <Container fluid>
           <Row>

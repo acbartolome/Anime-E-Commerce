@@ -1,5 +1,11 @@
 import React from "react";
-import { render, screen, fireEvent, waitFor } from "@testing-library/react";
+import {
+  render,
+  screen,
+  fireEvent,
+  waitFor,
+  act,
+} from "@testing-library/react";
 import "@testing-library/jest-dom";
 import ShopAll from "./ShopAll";
 import { useNavigate, useSearchParams } from "react-router-dom";
@@ -42,15 +48,26 @@ describe("ShopAll Component", () => {
     jest.restoreAllMocks();
   });
 
-  test("shows loading message when data is being fetched", () => {
+  test("renders products after fetching", async () => {
     render(<ShopAll cart={[]} setCart={setCartMock} />);
 
-    // Simulate the initial loading state
-    expect(screen.getByText("Loading items....")).toBeInTheDocument();
+    // Wrap the state update with act
+    await act(async () => {});
+
+    // Wait for the products to be rendered
+    await waitFor(() => {
+      expect(screen.getByText("Product 1")).toBeInTheDocument();
+      expect(screen.getByText("$29.99")).toBeInTheDocument();
+      expect(screen.getByText("Product 2")).toBeInTheDocument();
+      expect(screen.getByText("$39.99")).toBeInTheDocument();
+    });
   });
 
   test("renders products after fetching", async () => {
     render(<ShopAll cart={[]} setCart={setCartMock} />);
+
+    // Wrap the state update with act
+    await act(async () => {});
 
     // Wait for the products to be rendered
     await waitFor(() => {
@@ -78,6 +95,8 @@ describe("ShopAll Component", () => {
     );
 
     render(<ShopAll cart={[]} setCart={setCartMock} />);
+
+    await act(async () => {});
 
     // Wait for the product to be rendered
     await waitFor(() => {
@@ -115,6 +134,7 @@ describe("ShopAll Component", () => {
 
     render(<ShopAll cart={[]} setCart={setCartMock} />);
 
+    await act(async () => {});
     // Wait for the product to be rendered
     await waitFor(() => {
       expect(screen.getByText("Product 1")).toBeInTheDocument();

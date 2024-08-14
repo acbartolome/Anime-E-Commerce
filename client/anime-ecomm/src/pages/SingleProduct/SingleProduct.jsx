@@ -45,7 +45,11 @@ const SingleProduct = ({ cart, setCart, isLoggedIn }) => {
         <div className="product-container">
           {product && (
             <Card className="product-card" style={{ width: "18rem" }}>
-              <Card.Img variant="top" src={product.imageUrl} />
+              <Card.Img
+                variant="top"
+                src={product.imageUrl}
+                alt={product.name}
+              />
               <Card.Body>
                 <Card.Title className="product-title">
                   {product.name}
