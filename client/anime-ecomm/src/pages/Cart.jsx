@@ -1,55 +1,141 @@
-// button that display's count useState count +1 or -1 for item quantity
+// import React, { useState, useEffect } from 'react';
+// import { useNavigate } from 'react-router-dom';
+// import "./Cart.css";
+
+// const Cart = ({ cartItems, setCartItems, user }) => {
+
+//   const navigate = useNavigate();
+
+//   useEffect(() => {
+//     localStorage.setItem('cartItems', JSON.stringify(cartItems));
+//   }, [cartItems]);
+
+//   const handleRemoveFromCart = (index) => {
+//     const updatedCart = cartItems.filter((_, i) => i !== index);
+//     setCartItems(updatedCart);
+//   };
+
+//   const handleAddToCart = async (product) => {
+//     if (!user) {
+//       const existingItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+//       const updatedItems = [...existingItems, product];
+//       localStorage.setItem('cartItems', JSON.stringify(updatedItems));
+//       setCartItems(updatedItems);
+//     } else {
+//       try {
+//         const response = await fetch('/cart', {
+//           method: 'POST',
+//           headers: {
+//             'Content-Type': 'application/json',
+//             Authorization: `Bearer ${user.token}`, // Assuming user token is available
+//           },
+//           body: JSON.stringify({ userId: user.id, productId: product.id, quantity: 1 }),
+//         });
+
+//         if (response.ok) {
+//           const updatedCart = await response.json();
+//           setCartItems(updatedCart.items);
+//         } else {
+//           console.error('Failed to add item to cart');
+//         }
+//       } catch (error) {
+//         console.error('Error adding item to cart:', error);
+//       }
+//     }
+//   };
 
 
-//if you not logged in you can still add things to your cart , 
-//but if you are logged in the products you added to your cart will be added to your new profile 
+//   const handleCheckout = () => {
+//     if (user) {
+//       navigate('/checkout');
+//     } else {
+//       alert('Please log in to checkout');
+//       navigate('/login');
+//     }
+//   };
 
-import React from 'react'
-import { useNavigate } from 'react-router-dom'
-import "./Cart.css"
+//   return (
+//     <div className='cart-container'>
+//       <h2>My Cart</h2>
+//       {cartItems.length === 0 ? (
+//         <p>Your cart is empty</p>
+//       ) : (
+//         cartItems.map((item, index) => (
+//           <div key={index} className='cart-item'>
+//             <h3 className='item-name'>{item.name}</h3>
+//             <img className='item-image' src={item.imageUrl} alt={item.name} />
+//             <p className='item-description'>{item.description}</p>
+//             <p className='item-price'>Price: ${item.price}</p>
+//             <button className='remove-button' onClick={() => handleRemoveFromCart(index)}>
+//               Remove
+//             </button>
+//           </div>
+//         ))
+//       )}
+//       <button className='checkout-button' onClick={handleCheckout}>
+//         Checkout
+//       </button>
 
-const Cart = ({ cart, setCart, isLoggedIn }) => {
-  const navigate = useNavigate()
+//     </div>
+//   );
+// };
+
+// export default Cart;
+
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import "./Cart.css";
+
+const Cart = ({ user }) => {
+  const [cartItems, setCartItems] = useState(() => {
+    // Ensure cartItems is always initialized as an array
+    const localCart = JSON.parse(localStorage.getItem('cartItems')) || [];
+    return Array.isArray(localCart) ? localCart : [];
+  });
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    localStorage.setItem('cartItems', JSON.stringify(cartItems));
+  }, [cartItems]);
 
   const handleRemoveFromCart = (index) => {
-    const updatedCart = cart.filter((_, i) => i !== index);
-    setCart(updatedCart);
+    const updatedCart = cartItems.filter((_, i) => i !== index);
+    setCartItems(updatedCart);
   };
 
   const handleCheckout = () => {
-    if (isLoggedIn) {
-      navigate('/checkout'); // Need a checkout page to do this.
+    if (user) {
+      navigate('/checkout');
     } else {
-      alert('Please log in to checkout'); // This would typically be a modal or a link to a login page.
-      navigate('/secure/login'); //add it later
+      alert('Please log in to checkout');
+      navigate('/login');
     }
   };
 
   return (
-    // create a css class for cart-container *Bradley*
     <div className='cart-container'>
-      <h2>MY CART</h2>
-      {cart.length === 0 ? (
+      <h2>My Cart</h2>
+      {cartItems.length === 0 ? (
         <p>Your cart is empty</p>
       ) : (
-        cart.map((item, index) => (
+        cartItems.map((item, index) => (
           <div key={index} className='cart-item'>
             <h3 className='item-name'>{item.name}</h3>
-            <img className='item-image' src={item.imageUrl} />
+            <img className='item-image' src={item.imageUrl} alt={item.name} />
             <p className='item-description'>{item.description}</p>
             <p className='item-price'>Price: ${item.price}</p>
-            <div className='item-controls'>
-              <button className='remove-button' onClick={() => handleRemoveFromCart(index)}>Remove</button>
-
-            </div>
+            <button className='remove-button' onClick={() => handleRemoveFromCart(index)}>
+              Remove
+            </button>
           </div>
         ))
       )}
-      <button className='checkout-button' onClick={handleCheckout} disabled={cart.length === 0}>Checkout</button>
-      {/* the disable is used to disable the button when certain conditions are met, aka if the cart is empty   */}
+      <button className='checkout-button' onClick={handleCheckout} disabled={cartItems.length === 0}>
+        Checkout
+      </button>
     </div>
-  )
+  );
+};
 
-}
-
-export default Cart
+export default Cart;

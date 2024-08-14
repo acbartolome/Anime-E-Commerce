@@ -35,7 +35,12 @@ const ShopAll = ({ cart, setCart }) => {
 
   // ----- handle logged in to add item to cart here ------
   const handleAddToCart = (product) => {
-    setCart([...cart, product]);
+    console.log("Adding product to cart:", product);
+    setCart((prevCart) => {
+      const updatedCart = [...prevCart, product];
+      console.log("Updated Cart:", updatedCart);
+      return updatedCart;
+    });
   }
 
 

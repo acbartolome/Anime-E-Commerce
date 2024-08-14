@@ -5,17 +5,12 @@ import { useParams } from "react-router-dom";
 import ListGroup from "react-bootstrap/ListGroup";
 
 const Account = () => {
-  // get user information
-  // allow edits to the users information
   const [user, setUser] = useState([]);
   const { id } = useParams();
-  // anythign else to add?
-  // modal to edit info???
+  
 
   const token = localStorage.getItem("token");
 
-  // need to make the route so that the user has to authenticate with their token?
-  // COME BACK TOMORROW!!!
   useEffect(() => {
     const fetchUserData = async () => {
       try {

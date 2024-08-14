@@ -18,7 +18,6 @@ const SingleProduct = ({ cart, setCart, isLoggedIn }) => {
         const response = await fetch(`http://localhost:3000/product/${id}`);
         const data = await response.json();
         setProduct(data);
-        console.log(data);
         setLoading(false);
       } catch (error) {
         console.error(error);
@@ -28,9 +27,33 @@ const SingleProduct = ({ cart, setCart, isLoggedIn }) => {
     getProduct();
   }, [id]);
 
-  // ----- handle logged in to add item to cart here ------
-  const handleAddToCart = () => {
-    setCart([...cart, product]);
+  const handleAddToCart = async () => {
+    if (!isLoggedIn) {
+      const existingItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+      const updatedItems = [...existingItems, product];
+      localStorage.setItem('cartItems', JSON.stringify(updatedItems));
+      setCart(updatedItems);
+    } else {
+      try {
+        const response = await fetch('/cart', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${localStorage.getItem('token')}`,
+          },
+          body: JSON.stringify({ userId: localStorage.getItem('userId'), productId: product.id, quantity: 1 }),
+        });
+
+        if (response.ok) {
+          const updatedCart = await response.json();
+          setCart(updatedCart.items);
+        } else {
+          console.error('Failed to add item to cart');
+        }
+      } catch (error) {
+        console.error('Error adding item to cart:', error);
+      }
+    }
   };
 
   return (
@@ -52,11 +75,11 @@ const SingleProduct = ({ cart, setCart, isLoggedIn }) => {
                 <Card.Text className="product-description">
                   {product.description}
                 </Card.Text>
-                <Button className="addToCart" variant="primary">
+                <Button className="addToCart" variant="primary" onClick={handleAddToCart}>
                   Add to cart
                 </Button>
                 <br />
-                <Button className="returnHome" variant="secondary">
+                <Button className="returnHome" variant="secondary" onClick={() => navigate('/')}>
                   Return home
                 </Button>
               </Card.Body>

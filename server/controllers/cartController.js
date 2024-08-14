@@ -4,7 +4,7 @@ const prisma = new PrismaClient();
 // Merge cart items from localStorage with the logged-in user's cart
 const mergeCart = async (req, res) => {
   const { items } = req.body;
-  const userId = req.cart.userId; // Assuming middleware sets req.userId
+  const userId = req.user ? req.user.id : null; // Assuming middleware sets req.userId
 
   try {
     const existingCart = await prisma.cart.findUnique({ where: { userId } });
@@ -27,17 +27,35 @@ const mergeCart = async (req, res) => {
     }
   } catch (error) {
     console.error("Error merging cart:", error);
-    res.status(500).json({ error: "Internal Server Error" });
+    res.status(500).json({ error: error.message });
   }
 };
 
 // View cart items for a specific user
+// const viewCartItem = async (req, res) => {
+//   try {
+//     // const userId = req.user ? req.user.id : parseInt(req.params.userId);
+//     const cartId = parseInt(req.params.id);
+//     const cart = await prisma.cart.findUnique({
+//       where: { id: cartId, },
+//     },
+//       include: {
+//     items: true,
+//   },
+// );
+
 const viewCartItem = async (req, res) => {
-  const userId = parseInt(req.params.userId);
   try {
-    const cart = await prisma.cart.findUnique({
-      where: { userId },
+    const cartId = parseInt(req.params.id);
+    const cartItems = await prisma.cart.findUnique({
+      where: {
+        id: cartId,
+      },
+      include: {
+        items: true,
+      },
     });
+    res.send(cartItems);
 
     if (!cart) {
       return res.status(404).json({ error: "Cart not found" });
@@ -46,7 +64,7 @@ const viewCartItem = async (req, res) => {
     res.json(cart);
   } catch (error) {
     console.error("Error retrieving cart items:", error);
-    res.status(500).json({ error: "Internal Server Error" });
+    res.status(500).json({ error: error.message });
   }
 };
 
@@ -70,7 +88,7 @@ const addToCart = async (req, res) => {
     res.status(200).json(cart);
   } catch (error) {
     console.error("Error adding item to cart:", error);
-    res.status(500).json({ error: "Internal Server Error" });
+    res.status(500).json({ error: error.message });
   }
 };
 
@@ -95,7 +113,7 @@ const updateCartItem = async (req, res) => {
     res.status(200).json(cart);
   } catch (error) {
     console.error("Error updating cart item:", error);
-    res.status(500).json({ error: "Internal Server Error" });
+    res.status(500).json({ error: error.message });
   }
 };
 
@@ -118,7 +136,7 @@ const removeItem = async (req, res) => {
     res.status(200).json(cart);
   } catch (error) {
     console.error("Error removing item from cart:", error);
-    res.status(500).json({ error: "Internal Server Error" });
+    res.status(500).json({ error: error.message });
   }
 };
 

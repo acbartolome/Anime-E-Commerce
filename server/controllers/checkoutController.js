@@ -34,10 +34,10 @@ const checkout = async (req, res) => {
   const { cart, userId } = req.body;
 
   try {
-    // Process the order (e.g., validate cart, calculate total, etc.)
-    // Save the order to the database
-    const order = await prisma.orderHistory.create({
-      data: {
+    const order = await prisma.orderHistory.upsert({
+      where: { userId },
+      update: { history: { push: cart } },
+      create: {
         userId,
         history: {
           items: cart,
@@ -59,11 +59,13 @@ const saveOrder = async (req, res) => {
   const { userId, cart } = req.body;
   console.log(userId);
   try {
-    const order = await prisma.orderHistory.create({
-      data: {
+    const order = await prisma.orderHistory.upsert({
+      where: { userId },
+      update: { history: { push: cart } },
+      create: {
         userId,
         User: {},
-        history: [{ userId, order: cart }], // You. can customize what details you want to save
+        history: [{ userId, order: cart }],
         createdAt: new Date(),
       },
     });
@@ -74,4 +76,4 @@ const saveOrder = async (req, res) => {
   }
 };
 
-module.exports = { getAllProductById, saveOrder, checkout }; // Ensure 'checkout' is exported
+module.exports = { getAllProductById, saveOrder, checkout };
