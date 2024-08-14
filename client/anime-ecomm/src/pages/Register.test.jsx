@@ -3,6 +3,8 @@ import "@testing-library/jest-dom";
 import Register from "./Register";
 import { MemoryRouter } from "react-router-dom";
 
+// Incomplete testing. Need to add error handling for when an email already exists
+
 // Mock the `fetch` function used in the component
 global.fetch = jest.fn();
 

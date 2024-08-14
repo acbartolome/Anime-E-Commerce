@@ -8,7 +8,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 
-// make sure to reference ID and check backend and make it similar to login !!!!
+// add better error handling for when an email already exist
 
 const Register = ({ setToken, setIsLoggedIn, setId, setAdmin }) => {
   const [name, setName] = useState("");
