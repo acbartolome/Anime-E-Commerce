@@ -71,6 +71,7 @@ const HomePage = () => {
             }
             className="homeCategory"
             src="https://store.crunchyroll.com/on/demandware.static/-/Sites-crunchyroll-master-catalog/default/dw8d3a98e5/images/4535123840678_lelouch-of-the-rebellion-code-geass-lelouch-lamperouge-gem-series-figure-gem15th-anniversary-ver_1.jpg"
+            alt="Collectables"
           />
         </Col>
         <Col>
@@ -83,6 +84,7 @@ const HomePage = () => {
             onClick={() => navigate("/collections/shop-all?category=clothing")}
             className="homeCategory"
             src="https://store.crunchyroll.com/on/demandware.static/-/Sites-crunchyroll-master-catalog/default/dw0d6c04fd/images/BHAS2678_bleach-ichigo-soul-reaper-ss-t-shirt_5.jpg"
+            alt="Clothing"
           />
         </Col>
       </Row>
@@ -101,6 +103,7 @@ const HomePage = () => {
             }
             className="homeCategory"
             src="https://store.crunchyroll.com/on/demandware.static/-/Sites-crunchyroll-master-catalog/default/dw49c583aa/rightstuf/704400107368_anime-attack-on-titan-the-final-season-part-2-limited-edition-blu-ray-dvd-primary.jpg"
+            alt="Home Entertainment"
           />
         </Col>
         <Col>
@@ -117,6 +120,7 @@ const HomePage = () => {
             }
             className="homeCategory"
             src="https://cdn10.bigcommerce.com/s-g9n04qy/products/814590/images/837237/61GpjyHb9VL._SL1350___47754.1687810750.500.500.jpg?c=2"
+            alt="Manga & Books"
           />
         </Col>
       </Row>

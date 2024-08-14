@@ -33,6 +33,10 @@ const SingleProduct = ({ cart, setCart, isLoggedIn }) => {
     setCart([...cart, product]);
   };
 
+  const handleReturnHome = () => {
+    navigate("/");
+  };
+
   return (
     <>
       {loading ? (
@@ -41,7 +45,11 @@ const SingleProduct = ({ cart, setCart, isLoggedIn }) => {
         <div className="product-container">
           {product && (
             <Card className="product-card" style={{ width: "18rem" }}>
-              <Card.Img variant="top" src={product.imageUrl} />
+              <Card.Img
+                variant="top"
+                src={product.imageUrl}
+                alt={product.name}
+              />
               <Card.Body>
                 <Card.Title className="product-title">
                   {product.name}
@@ -52,11 +60,15 @@ const SingleProduct = ({ cart, setCart, isLoggedIn }) => {
                 <Card.Text className="product-description">
                   {product.description}
                 </Card.Text>
-                <Button className="addToCart" variant="primary">
+                <Button type="button" className="addToCart" variant="primary">
                   Add to cart
                 </Button>
                 <br />
-                <Button className="returnHome" variant="secondary">
+                <Button
+                  className="returnHome"
+                  variant="secondary"
+                  onClick={handleReturnHome}
+                >
                   Return home
                 </Button>
               </Card.Body>
