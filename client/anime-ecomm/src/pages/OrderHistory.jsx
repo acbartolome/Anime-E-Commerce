@@ -6,7 +6,7 @@ const OrderHistory = ({ id }) => {
   useEffect(() => {
     const orderHistory = async () => {
       const response = await fetch(
-        `anime-e-commerce-apgc8t6g5-brad434s-projects.vercel.app/orderhistory/${id}`
+        `https://anime-e-commerce.vercel.app/orderhistory/${id}`
       );
       const data = await response.json();
       console.log(data);

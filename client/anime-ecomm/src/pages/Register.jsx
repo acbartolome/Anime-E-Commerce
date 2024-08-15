@@ -22,7 +22,7 @@ const Register = ({ setToken, setIsLoggedIn, setId, setAdmin }) => {
 
     try {
       const response = await fetch(
-        "anime-e-commerce-apgc8t6g5-brad434s-projects.vercel.app/auth/register",
+        "https://anime-e-commerce.vercel.app/auth/register",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },

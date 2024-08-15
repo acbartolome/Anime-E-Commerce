@@ -20,7 +20,7 @@ const Login = ({ setIsLoggedIn, setId, setAdmin }) => {
     const loginObject = { email, password };
     try {
       const response = await fetch(
-        "anime-e-commerce-apgc8t6g5-brad434s-projects.vercel.app/auth/login/",
+        "https://anime-e-commerce.vercel.app/auth/login/",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
