@@ -7,7 +7,7 @@ const OrderHistory = ({ userId }) => {
     const fetchOrderHistory = async () => {
       try {
         const response = await fetch(
-          `https://anime-e-commerce.vercel.app/order-history/${userId}`
+          `https://anime-e-commerce-6b23vf4cd-brad434s-projects.vercel.app/order-history/${userId}`
         );
         const data = await response.json();
         setOrderHistory(data.history);
