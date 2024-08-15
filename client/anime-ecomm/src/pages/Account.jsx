@@ -8,9 +8,7 @@ import { Button } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 
-const Account = () => {
-  // get user information
-  // allow edits to the users information
+const Account = ({ token, id }) => {
   const [user, setUser] = useState([]);
   const { id } = useParams();
   // anythign else to add?
@@ -23,7 +21,7 @@ const Account = () => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const token = localStorage.getItem("token");
+  // const token = localStorage.getItem("token");
 
   useEffect(() => {
     const fetchUserData = async () => {

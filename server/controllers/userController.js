@@ -19,7 +19,8 @@ const getAllUsers = async (req, res) => {
 const getSingleUser = async (req, res) => {
   try {
     const userId = parseInt(req.params.id);
-    const user = await prisma.user.findUnique({
+    console.log(userId);
+    const user = await prisma.User.findUnique({
       where: { id: userId },
     });
     res.send(user);

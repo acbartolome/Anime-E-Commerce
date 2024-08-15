@@ -1,16 +1,18 @@
+require("dotenv").config();
 const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const { JWT_SECRET_KEY } = process.env;
-require("dotenv").config();
 
 const register = async (req, res) => {
   const { name, email, password } = req.body;
+  const emailOne = email.toLowerCase();
+
   try {
     const existingUser = await prisma.user.findUnique({
       where: {
-        email,
+        email: emailOne,
       },
     });
 
@@ -23,12 +25,12 @@ const register = async (req, res) => {
     const user = await prisma.user.create({
       data: {
         name,
-        email,
+        email: emailOne,
         password: hashPassword,
       },
     });
-    console.log(user);
-
+    // console.log(user);
+    // console.log("register jwt: " + JWT_SECRET_KEY);
     const token = jwt.sign(
       {
         id: user.id,
@@ -50,12 +52,13 @@ const register = async (req, res) => {
 
 const login = async (req, res) => {
   const { email, password } = req.body;
-  console.log({ email, password });
+  const emailOne = email.toLowerCase();
 
   try {
+    //turn the email into lowercase and do it for register
     const user = await prisma.user.findUnique({
       where: {
-        email,
+        email: emailOne,
       },
     });
 
@@ -74,6 +77,7 @@ const login = async (req, res) => {
       return res.status(401).send("Invalid credentials!");
     }
 
+    console.log("login jwt: " + JWT_SECRET_KEY);
     // generate JWT Token
     const token = jwt.sign(
       {
@@ -87,14 +91,12 @@ const login = async (req, res) => {
     );
 
     console.log(token);
-    res
-      .status(200)
-      .send({
-        token,
-        message: "Successfully logged in.",
-        id: user.id,
-        admin: user.admin,
-      });
+    res.status(200).send({
+      token,
+      message: "Successfully logged in.",
+      id: user.id,
+      admin: user.admin,
+    });
 
     //STEP2 : Alternate in finding user and password
     // if (user && bcrypt.compare(password, user.password)) {

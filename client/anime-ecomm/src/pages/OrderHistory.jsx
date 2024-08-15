@@ -1,6 +1,17 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
-const OrderHistory = () => {
+const OrderHistory = ({ id }) => {
+  const [orders, setOrders] = useState([]);
+
+  useEffect(() => {
+    const orderHistory = async () => {
+      const response = await fetch(`http://localhost:3000/orderhistory/${id}`);
+      const data = await response.json();
+      console.log(data);
+      setOrders(data);
+    }
+  });
+
   return <div>ORDER HISTORY PAGE</div>;
 };
 
