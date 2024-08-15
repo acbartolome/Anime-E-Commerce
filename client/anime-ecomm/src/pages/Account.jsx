@@ -4,12 +4,12 @@ import { useParams } from "react-router-dom";
 
 import ListGroup from "react-bootstrap/ListGroup";
 
-const Account = () => {
+const Account = ({ token, id }) => {
   const [user, setUser] = useState([]);
-  const { id } = useParams();
-  
+  // const { id } = useParams();
 
-  const token = localStorage.getItem("token");
+
+  // const token = localStorage.getItem("token");
 
   useEffect(() => {
     const fetchUserData = async () => {

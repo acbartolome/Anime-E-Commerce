@@ -75,17 +75,17 @@ function App() {
           <Route
             path="/account/:id"
             element={
-              <Account token={token} cart={cart} isLoggedIn={isLoggedIn} />
+              <Account token={token} cart={cart} isLoggedIn={isLoggedIn} id={id} />
             }
           />
-          <Route path="/account/order-history" element={<OrderHistory userId={id} />} />
+          <Route path="/account/order-history" element={<OrderHistory id={id} />} />
           <Route
             path="/cart"
             element={
               <Cart cart={cart} setCart={setCart} isLoggedIn={isLoggedIn} />
             }
           />
-          <Route path="/checkout" element={<Checkout cart={cart} id={id} setCart={setCart} />} />
+          <Route path="/checkout" element={<Checkout cart={cart} id={id} setCart={setCart} token={token} />} />
           <Route path="/auth/admin-page" element={<AdminPage />} />
         </Routes>
       </Router>

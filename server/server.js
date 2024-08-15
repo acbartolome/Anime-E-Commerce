@@ -7,6 +7,7 @@ const cartRoute = require("./routes/cartRoutes");
 const orderHistoryRoute = require("./routes/orderHistoryRoutes");
 const registerRoute = require("./auth/authRoutes");
 const checkoutRoute = require("./routes/checkoutRoutes");
+
 require("dotenv").config();
 
 const app = express();

@@ -57,18 +57,19 @@ const checkout = async (req, res) => {
 // Save order details after successful payment (this is typically called after payment is confirmed)
 const saveOrder = async (req, res) => {
   const { userId, cart } = req.body;
-  console.log(userId);
+  console.log({ userId, cart });
   try {
-    const order = await prisma.orderHistory.upsert({
-      where: { userId },
-      update: { history: { push: cart } },
-      create: {
+    const order = await prisma.orderHistory.update({
+      where: {
         userId,
-        User: {},
-        history: [{ userId, order: cart }],
-        createdAt: new Date(),
+      },
+      data: {
+        history: {
+          push: cart,
+        },
       },
     });
+    console.log("checkoutController:" + order);
     res.send(order);
   } catch (error) {
     console.error("Error saving order:", error);

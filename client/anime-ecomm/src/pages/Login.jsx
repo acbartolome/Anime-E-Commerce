@@ -31,6 +31,7 @@ const Login = ({ setIsLoggedIn, setId }) => {
         setId(data.id);
         setIsLoggedIn(true);
         alert("Successfully Logged in");
+        navigate(`/account/${data.id}`)
       } else {
         console.error("Error logging in");
       }

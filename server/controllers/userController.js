@@ -20,7 +20,7 @@ const getSingleUser = async (req, res) => {
   try {
     const userId = parseInt(req.params.id);
     console.log(userId);
-    const user = await prisma.user.findUnique({
+    const user = await prisma.User.findUnique({
       where: { id: userId },
     });
     res.send(user);
