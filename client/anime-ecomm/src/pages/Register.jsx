@@ -21,11 +21,14 @@ const Register = ({ setToken, setIsLoggedIn, setId, setAdmin }) => {
     const registerObject = { name, email, password };
 
     try {
-      const response = await fetch("http://localhost:3000/auth/register", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(registerObject),
-      });
+      const response = await fetch(
+        "anime-e-commerce-apgc8t6g5-brad434s-projects.vercel.app/auth/register",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(registerObject),
+        }
+      );
       const data = await response.json();
 
       if (response.status === 400) {

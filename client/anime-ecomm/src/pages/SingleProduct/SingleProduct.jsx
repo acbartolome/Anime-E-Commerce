@@ -15,7 +15,9 @@ const SingleProduct = ({ cart, setCart, isLoggedIn }) => {
   useEffect(() => {
     const getProduct = async () => {
       try {
-        const response = await fetch(`http://localhost:3000/product/${id}`);
+        const response = await fetch(
+          `anime-e-commerce-apgc8t6g5-brad434s-projects.vercel.app/product/${id}`
+        );
         const data = await response.json();
         setProduct(data);
         setLoading(false);

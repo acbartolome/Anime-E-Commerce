@@ -19,11 +19,14 @@ const Login = ({ setIsLoggedIn, setId, setAdmin }) => {
     event.preventDefault();
     const loginObject = { email, password };
     try {
-      const response = await fetch("http://localhost:3000/auth/login/", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(loginObject),
-      });
+      const response = await fetch(
+        "anime-e-commerce-apgc8t6g5-brad434s-projects.vercel.app/auth/login/",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(loginObject),
+        }
+      );
       if (response.ok) {
         const data = await response.json();
         console.log("DATA", data);

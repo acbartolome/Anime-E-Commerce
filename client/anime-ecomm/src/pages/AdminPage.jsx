@@ -43,7 +43,9 @@ const AdminPage = (admin, isLoggedIn) => {
     const fetchUsers = async () => {
       try {
         if (admin) {
-          const response = await fetch("http://localhost:3000/users/");
+          const response = await fetch(
+            "anime-e-commerce-apgc8t6g5-brad434s-projects.vercel.app/users/"
+          );
           const data = await response.json();
           console.log("USER DATA", data);
           setUsers(data);
@@ -60,7 +62,9 @@ const AdminPage = (admin, isLoggedIn) => {
     const fetchProducts = async () => {
       try {
         if (admin) {
-          const response = await fetch("http://localhost:3000/product/");
+          const response = await fetch(
+            "anime-e-commerce-apgc8t6g5-brad434s-projects.vercel.appproduct/"
+          );
           const data = await response.json();
           console.log("PRODUCT DATA", data);
           setProducts(data);
@@ -85,13 +89,16 @@ const AdminPage = (admin, isLoggedIn) => {
     };
     try {
       if (admin) {
-        const response = await fetch("http://localhost:3000/product/", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(productObject),
-        });
+        const response = await fetch(
+          "anime-e-commerce-apgc8t6g5-brad434s-projects.vercel.app/product/",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(productObject),
+          }
+        );
         const data = await response.json();
         alert("You have successfully added a product");
       }
@@ -109,20 +116,23 @@ const AdminPage = (admin, isLoggedIn) => {
       if (admin) {
         console.log("Hit");
         console.log("ID", id);
-        const response = await fetch(`http://localhost:3000/product/${id}`, {
-          method: "PATCH",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            name,
-            description,
-            price,
-            imageUrl,
-            category,
-            stock,
-          }),
-        });
+        const response = await fetch(
+          `anime-e-commerce-apgc8t6g5-brad434s-projects.vercel.app/product/${id}`,
+          {
+            method: "PATCH",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              name,
+              description,
+              price,
+              imageUrl,
+              category,
+              stock,
+            }),
+          }
+        );
         console.log("PATCH RESPONSE", { response });
         const data = await response.json();
         console.log("PATCH DATA", data);
@@ -138,9 +148,12 @@ const AdminPage = (admin, isLoggedIn) => {
   const handleDeleteProduct = async (id) => {
     try {
       if (admin) {
-        const response = await fetch(`http://localhost:3000/product/${id}`, {
-          method: "DELETE",
-        });
+        const response = await fetch(
+          `anime-e-commerce-apgc8t6g5-brad434s-projects.vercel.app/product/${id}`,
+          {
+            method: "DELETE",
+          }
+        );
         alert("You have deleted a product");
         location.reload();
       }
