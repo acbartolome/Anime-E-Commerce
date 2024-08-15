@@ -9,8 +9,10 @@ const Logout = ({ setIsLoggedIn, setToken }) => {
     setToken(null);
     setIsLoggedIn(false);
     localStorage.removeItem("token");
+    localStorage.removeItem("id");
+    localStorage.removeItem("admin");
     navigate("/");
-  }, [navigate, setIsLoggedIn, setToken]);
+  }, []);
 
   return null;
 };

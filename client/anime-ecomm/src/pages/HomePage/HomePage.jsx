@@ -10,7 +10,7 @@ import Carousel from "react-bootstrap/Carousel";
 
 import "./HomePage.css";
 
-const HomePage = () => {
+const HomePage = ({ admin, id }) => {
   const navigate = useNavigate();
   return (
     <Container className="homepage-container">

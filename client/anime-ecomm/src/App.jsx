@@ -16,8 +16,9 @@ import SingleProduct from "./pages/SingleProduct/SingleProduct";
 function App() {
   const [token, setToken] = useState(localStorage.getItem("token") || null);
   const [isLoggedIn, setIsLoggedIn] = useState(!!token);
-  const [id, setId] = useState(null);
-  const [admin, setAdmin] = useState(false);
+  const [id, setId] = useState(localStorage.getItem("id") || null);
+  const [admin, setAdmin] = useState(localStorage.getItem("admin") || null);
+  console.log({ admin, id });
   const [cart, setCart] = useState(() => {
     const savedCart = localStorage.getItem("cart");
     return savedCart ? JSON.parse(savedCart) : [];
@@ -34,7 +35,14 @@ function App() {
         <Routes>
           <Route
             path="/"
-            element={<HomePage isLoggedIn={isLoggedIn} token={token} />}
+            element={
+              <HomePage
+                isLoggedIn={isLoggedIn}
+                token={token}
+                admin={admin}
+                id={id}
+              />
+            }
           />
           <Route
             path="/collections/shop-all"

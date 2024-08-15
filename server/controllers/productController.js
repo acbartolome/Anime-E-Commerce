@@ -60,10 +60,10 @@ const createProduct = async (req, res) => {
       data: {
         name,
         description,
-        price,
+        price: +price,
         imageUrl,
         category,
-        stock,
+        stock: +stock,
       },
     });
     res.status(201).send(newProduct);
@@ -76,6 +76,7 @@ const createProduct = async (req, res) => {
 const editProduct = async (req, res) => {
   try {
     const productId = parseInt(req.params.id);
+    console.log(req.body);
     const { name, description, price, imageUrl, category, stock } = req.body;
     const data = {};
     if (name) {
@@ -85,7 +86,7 @@ const editProduct = async (req, res) => {
       data.description = description;
     }
     if (price) {
-      data.price = price;
+      data.price = +price;
     }
     if (imageUrl) {
       data.imageUrl = imageUrl;
@@ -94,8 +95,9 @@ const editProduct = async (req, res) => {
       data.category = category;
     }
     if (stock) {
-      data.stock = stock;
+      data.stock = +stock;
     }
+    console.log(data);
     const updateProduct = await prisma.product.update({
       where: {
         id: productId,
