@@ -16,7 +16,7 @@ const SingleProduct = ({ cart, setCart, isLoggedIn }) => {
     const getProduct = async () => {
       try {
         const response = await fetch(
-          `https://anime-e-commerce-6b23vf4cd-brad434s-projects.vercel.app/product/${id}`
+          `https://anime-e-commerce-backend.onrender.com/product/${id}`
         );
         const data = await response.json();
         setProduct(data);

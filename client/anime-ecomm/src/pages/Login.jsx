@@ -20,7 +20,7 @@ const Login = ({ setIsLoggedIn, setId, setAdmin }) => {
     const loginObject = { email, password };
     try {
       const response = await fetch(
-        "https://anime-e-commerce-6b23vf4cd-brad434s-projects.vercel.app/auth/login/",
+        "https://anime-e-commerce-backend.onrender.com/auth/login/",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },

@@ -44,7 +44,7 @@ const AdminPage = (admin, isLoggedIn) => {
       try {
         if (admin) {
           const response = await fetch(
-            "https://anime-e-commerce-6b23vf4cd-brad434s-projects.vercel.app/users/"
+            "https://anime-e-commerce-backend.onrender.com/users/"
           );
           const data = await response.json();
           console.log("USER DATA", data);
