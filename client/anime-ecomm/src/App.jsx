@@ -21,6 +21,7 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(!!token);
   const [id, setId] = useState(localStorage.getItem("id") || null);
   const [admin, setAdmin] = useState(localStorage.getItem("admin") || null);
+  console.log({ admin, id });
   const [cart, setCart] = useState(() => {
     const savedCart = localStorage.getItem("cart");
     return savedCart ? JSON.parse(savedCart) : [];
@@ -30,21 +31,6 @@ function App() {
     console.log("Cart updated:", cart);
     localStorage.setItem("cart", JSON.stringify(cart));
   }, [cart]);
-
-  // useEffect(() => {
-  //   const fetchUser = async () => {
-  //     try {
-  //       if (id) {
-  //         const response = await fetch(`http://localhost:3000/users/${id}`);
-  //         const data = await response.json();
-  //         setAdmin(data.admin);
-  //       }
-  //     } catch (error) {
-  //       console.error("There was an issue with fetching user");
-  //     }
-  //   };
-  //   fetchUser();
-  // }, []);
 
   return (
     <>

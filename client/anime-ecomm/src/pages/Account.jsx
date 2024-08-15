@@ -28,13 +28,16 @@ const Account = ({ token, id }) => {
       try {
         console.log({ token });
         if (token) {
-          const response = await fetch(`http://localhost:3000/users/${id}`, {
-            method: "GET",
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${token}`,
-            },
-          });
+          const response = await fetch(
+            `anime-e-commerce-apgc8t6g5-brad434s-projects.vercel.app/users/${id}`,
+            {
+              method: "GET",
+              headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
+              },
+            }
+          );
           console.log({ response });
           const data = await response.json();
           console.log("DATA", data);
@@ -52,18 +55,21 @@ const Account = ({ token, id }) => {
       console.log("TOKEN handleEdit", token);
       if (token) {
         console.log("Hit");
-        const response = await fetch(`http://localhost:3000/users/${id}`, {
-          method: "PATCH",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-          body: JSON.stringify({
-            name,
-            email,
-            password,
-          }),
-        });
+        const response = await fetch(
+          `anime-e-commerce-apgc8t6g5-brad434s-projects.vercel.appusers/${id}`,
+          {
+            method: "PATCH",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`,
+            },
+            body: JSON.stringify({
+              name,
+              email,
+              password,
+            }),
+          }
+        );
         console.log("PATCH RESPONSE", { response });
         const data = await response.json();
         console.log("DATA", data);
