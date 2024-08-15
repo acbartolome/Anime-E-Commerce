@@ -18,7 +18,6 @@ const SingleProduct = ({ cart, setCart, isLoggedIn }) => {
         const response = await fetch(`http://localhost:3000/product/${id}`);
         const data = await response.json();
         setProduct(data);
-        console.log(data);
         setLoading(false);
       } catch (error) {
         console.error(error);

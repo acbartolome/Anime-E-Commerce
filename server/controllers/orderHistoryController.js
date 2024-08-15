@@ -9,6 +9,9 @@ const viewOrderHistory = async (req, res) => {
       where: {
         userId,
       },
+      include: {
+        history: true,
+      },
     });
     res.send(orderHistory);
   } catch (error) {

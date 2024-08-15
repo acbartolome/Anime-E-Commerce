@@ -12,6 +12,9 @@ import OrderHistory from "./pages/OrderHistory";
 import Register from "./pages/Register";
 import ShopAll from "./pages/ShopAll/ShopAll";
 import SingleProduct from "./pages/SingleProduct/SingleProduct";
+import Checkout from "./components/Checkout";
+
+
 
 function App() {
   const [token, setToken] = useState(localStorage.getItem("token") || null);
@@ -25,6 +28,7 @@ function App() {
   });
 
   useEffect(() => {
+    console.log("Cart updated:", cart);
     localStorage.setItem("cart", JSON.stringify(cart));
   }, [cart]);
 
