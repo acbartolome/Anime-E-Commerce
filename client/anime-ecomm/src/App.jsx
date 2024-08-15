@@ -49,7 +49,14 @@ function App() {
         <Routes>
           <Route
             path="/"
-            element={<HomePage isLoggedIn={isLoggedIn} token={token} />}
+            element={
+              <HomePage
+                isLoggedIn={isLoggedIn}
+                token={token}
+                admin={admin}
+                id={id}
+              />
+            }
           />
           <Route
             path="/collections/shop-all"
@@ -103,7 +110,12 @@ function App() {
           <Route
             path="/account/:id"
             element={
-              <Account token={token} cart={cart} isLoggedIn={isLoggedIn} />
+              <Account
+                token={token}
+                cart={cart}
+                isLoggedIn={isLoggedIn}
+                id={id}
+              />
             }
           />
           <Route
