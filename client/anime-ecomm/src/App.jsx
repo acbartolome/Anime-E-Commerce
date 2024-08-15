@@ -96,7 +96,12 @@ function App() {
           <Route
             path="/account/:id"
             element={
-              <Account token={token} cart={cart} isLoggedIn={isLoggedIn} />
+              <Account
+                token={token}
+                cart={cart}
+                isLoggedIn={isLoggedIn}
+                id={id}
+              />
             }
           />
           <Route

@@ -5,6 +5,7 @@ import Col from "react-bootstrap/Col";
 import logoOne from "../../assets/CR Store Slider - Desktop 2000 x 500 - SALE ANNOUNCEMENT - NONSUBS - 8_5.jpg";
 import logoTwo from "../../assets/US_2024 07_CRxLogicxCowboy Bebop WK1 + WK2_CR Store Assets-Store_Slide-Dtop-Product_Lay.jpg";
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 // Carousel
 import Carousel from "react-bootstrap/Carousel";
 
@@ -12,6 +13,9 @@ import "./HomePage.css";
 
 const HomePage = ({ admin, id }) => {
   const navigate = useNavigate();
+  useEffect(() => {
+    console.log({ admin, id });
+  }, [admin, id]);
   return (
     <Container className="homepage-container">
       <Row className="hero-section">

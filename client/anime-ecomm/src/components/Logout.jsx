@@ -13,8 +13,6 @@ const Logout = ({ setIsLoggedIn, setToken }) => {
     localStorage.removeItem("admin");
     navigate("/");
   }, []);
-
-  return null;
 };
 
 export default Logout;

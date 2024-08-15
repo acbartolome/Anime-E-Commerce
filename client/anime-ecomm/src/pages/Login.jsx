@@ -35,7 +35,7 @@ const Login = ({ setIsLoggedIn, setId, setAdmin }) => {
         alert("Successfully Logged in");
         setEmail("");
         setPassword("");
-        navigate("/");
+        navigate(`/account/${data.id}`);
       } else {
         console.error("Error logging in");
       }
