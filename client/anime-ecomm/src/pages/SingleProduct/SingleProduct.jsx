@@ -27,33 +27,13 @@ const SingleProduct = ({ cart, setCart, isLoggedIn }) => {
     getProduct();
   }, [id]);
 
-  const handleAddToCart = async () => {
-    if (!isLoggedIn) {
-      const existingItems = JSON.parse(localStorage.getItem('cartItems')) || [];
-      const updatedItems = [...existingItems, product];
-      localStorage.setItem('cartItems', JSON.stringify(updatedItems));
-      setCart(updatedItems);
-    } else {
-      try {
-        const response = await fetch('/cart', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${localStorage.getItem('token')}`,
-          },
-          body: JSON.stringify({ userId: localStorage.getItem('userId'), productId: product.id, quantity: 1 }),
-        });
+  // ----- handle logged in to add item to cart here ------
+  const handleAddToCart = () => {
+    setCart([...cart, product]);
+  };
 
-        if (response.ok) {
-          const updatedCart = await response.json();
-          setCart(updatedCart.items);
-        } else {
-          console.error('Failed to add item to cart');
-        }
-      } catch (error) {
-        console.error('Error adding item to cart:', error);
-      }
-    }
+  const handleReturnHome = () => {
+    navigate("/");
   };
 
   return (
@@ -64,7 +44,11 @@ const SingleProduct = ({ cart, setCart, isLoggedIn }) => {
         <div className="product-container">
           {product && (
             <Card className="product-card" style={{ width: "18rem" }}>
-              <Card.Img variant="top" src={product.imageUrl} />
+              <Card.Img
+                variant="top"
+                src={product.imageUrl}
+                alt={product.name}
+              />
               <Card.Body>
                 <Card.Title className="product-title">
                   {product.name}
@@ -75,11 +59,15 @@ const SingleProduct = ({ cart, setCart, isLoggedIn }) => {
                 <Card.Text className="product-description">
                   {product.description}
                 </Card.Text>
-                <Button className="addToCart" variant="primary" onClick={handleAddToCart}>
+                <Button type="button" className="addToCart" variant="primary">
                   Add to cart
                 </Button>
                 <br />
-                <Button className="returnHome" variant="secondary" onClick={() => navigate('/')}>
+                <Button
+                  className="returnHome"
+                  variant="secondary"
+                  onClick={handleReturnHome}
+                >
                   Return home
                 </Button>
               </Card.Body>

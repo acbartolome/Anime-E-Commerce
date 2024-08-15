@@ -54,19 +54,19 @@ async function seedData() {
         {
           name: faker.person.fullName(),
           email: faker.internet.email(),
-          password: await hashPassword(faker.internet.password()),
+          password: await hashPassword("This1sTotallyaSeCurePasSword"),
           admin: false,
         },
         {
           name: faker.person.fullName(),
           email: faker.internet.email(),
-          password: await hashPassword(faker.internet.password()),
+          password: await hashPassword("This1sTotallyaSeCurePasSword"),
           admin: false,
         },
         {
           name: faker.person.fullName(),
           email: faker.internet.email(),
-          password: await hashPassword(faker.internet.password()),
+          password: await hashPassword("This1sTotallyaSeCurePasSword"),
           admin: false,
         },
       ],

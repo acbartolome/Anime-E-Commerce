@@ -41,8 +41,9 @@ const register = async (req, res) => {
         expiresIn: "60m",
       }
     );
-    // res.json({ message: "Hello world", token });
-    res.status(201).send({ user, token });
+    res
+      .status(201)
+      .send({ user, token, message: "Account successfully created" });
   } catch (error) {
     console.log(error);
     res.status(500).json({ message: "Internal Register Error" });
@@ -54,6 +55,7 @@ const login = async (req, res) => {
   const emailOne = email.toLowerCase();
 
   try {
+    //turn the email into lowercase and do it for register
     const user = await prisma.user.findUnique({
       where: {
         email: emailOne,
@@ -89,7 +91,12 @@ const login = async (req, res) => {
     );
 
     console.log(token);
-    res.status(200).send({ token, message: "Successfully logged in.", user });
+    res.status(200).send({
+      token,
+      message: "Successfully logged in.",
+      id: user.id,
+      admin: user.admin,
+    });
 
     //STEP2 : Alternate in finding user and password
     // if (user && bcrypt.compare(password, user.password)) {

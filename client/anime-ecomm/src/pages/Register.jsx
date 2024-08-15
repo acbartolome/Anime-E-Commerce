@@ -8,7 +8,9 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 
-const Register = ({ setToken, setIsLoggedIn }) => {
+// add better error handling for when an email already exist
+
+const Register = ({ setToken, setIsLoggedIn, setId, setAdmin }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -27,7 +29,12 @@ const Register = ({ setToken, setIsLoggedIn }) => {
       const data = await response.json();
       console.log("Register data", data);
       localStorage.setItem("token", data.token);
+      localStorage.setItem("id", data.user.id);
+      setAdmin(data.user.admin);
       setIsLoggedIn(true);
+      console.log("USER?", data.user);
+      console.log("USER ID?", data.user.id);
+      console.log("ADMIN", data.user.admin);
       console.log("token!", data.token);
       alert("Successfully created an account");
       setName("");

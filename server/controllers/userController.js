@@ -34,13 +34,21 @@ const updateUser = async (req, res) => {
     const userId = parseInt(req.params.id);
     const { name, email, password } = req.body;
     // should we add a hash password
+    const data = {};
+    if (name) {
+      data.name = name;
+    }
+    if (email) {
+      data.email = email;
+    }
+    if (password) {
+      data.password = password;
+    }
     const updateUser = await prisma.user.update({
       where: {
         id: userId,
       },
-      data: name,
-      email,
-      password,
+      data,
     });
     res.send(updateUser);
   } catch (error) {

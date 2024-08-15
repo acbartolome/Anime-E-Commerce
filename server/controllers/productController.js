@@ -55,10 +55,73 @@ const getProductByCategory = async (req, res) => {
 // add another parameter that allows for only admins
 const createProduct = async (req, res) => {
   try {
-    const newProduct = prisma.product.create({
-      data: req.body,
+    const { name, description, price, imageUrl, category, stock } = req.body;
+    const newProduct = await prisma.product.create({
+      data: {
+        name,
+        description,
+        price: +price,
+        imageUrl,
+        category,
+        stock: +stock,
+      },
     });
-    res.send(newProduct);
+    res.status(201).send(newProduct);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+// edit product - admin only
+const editProduct = async (req, res) => {
+  try {
+    const productId = parseInt(req.params.id);
+    console.log(req.body);
+    const { name, description, price, imageUrl, category, stock } = req.body;
+    const data = {};
+    if (name) {
+      data.name = name;
+    }
+    if (description) {
+      data.description = description;
+    }
+    if (price) {
+      data.price = +price;
+    }
+    if (imageUrl) {
+      data.imageUrl = imageUrl;
+    }
+    if (category) {
+      data.category = category;
+    }
+    if (stock) {
+      data.stock = +stock;
+    }
+    console.log(data);
+    const updateProduct = await prisma.product.update({
+      where: {
+        id: productId,
+      },
+      data,
+    });
+    res
+      .status(200)
+      .send(updateProduct, { message: "Product successfully updated" });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+// delete product - admin only
+const deleteProduct = async (req, res) => {
+  try {
+    const productId = parseInt(req.params.id);
+    await prisma.product.delete({
+      where: {
+        id: productId,
+      },
+    });
+    res.status(200).send("Product successfully deleted");
   } catch (error) {
     console.log(error);
   }
@@ -69,4 +132,6 @@ module.exports = {
   getSingleProduct,
   createProduct,
   getProductByCategory,
+  editProduct,
+  deleteProduct,
 };

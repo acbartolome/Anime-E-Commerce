@@ -1,5 +1,8 @@
 const express = require("express");
 const router = express.Router();
+const jwt = require("jsonwebtoken");
+const { PrismaClient } = require("@prisma/client");
+const prisma = new PrismaClient();
 const {
   getAllUsers,
   getSingleUser,
@@ -20,10 +23,13 @@ const requireUser = async (req, res, next) => {
   try {
     //check if the specific user has matching token
     const { id } = jwt.verify(token, JWT_SECRET_KEY);
-    const user = await getSingleUser(id);
-    if (!user) {
-      return res.status(403).json({ error: "User not found" });
-    }
+    const userId = parseInt(id);
+    const user = await prisma.user.findUnique({
+      where: { id: userId },
+    });
+    // if (!user) {
+    //   return res.status(403).json({ error: "User not found" });
+    // }
     req.user = user;
     next();
   } catch (error) {
