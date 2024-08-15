@@ -8,7 +8,7 @@ import { Button } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 
-const Account = ({ token, id }) => {
+const Account = ({ token }) => {
   const [user, setUser] = useState([]);
   const { id } = useParams();
   // anythign else to add?
@@ -29,7 +29,7 @@ const Account = ({ token, id }) => {
         console.log({ token });
         if (token) {
           const response = await fetch(
-            `anime-e-commerce-apgc8t6g5-brad434s-projects.vercel.app/users/${id}`,
+            `https://anime-e-commerce.vercel.app/users/${id}`,
             {
               method: "GET",
               headers: {
@@ -56,7 +56,7 @@ const Account = ({ token, id }) => {
       if (token) {
         console.log("Hit");
         const response = await fetch(
-          `anime-e-commerce-apgc8t6g5-brad434s-projects.vercel.appusers/${id}`,
+          `https://anime-e-commerce.vercel.app/${id}`,
           {
             method: "PATCH",
             headers: {

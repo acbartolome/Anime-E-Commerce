@@ -14,7 +14,7 @@ const Checkout = ({ cart, setCart, id, token }) => {
   const handleCheckout = async () => {
     try {
       const response = await fetch(
-        "anime-e-commerce-apgc8t6g5-brad434s-projects.vercel.app/account/checkout",
+        "https://anime-e-commerce.vercel.app/account/checkout",
         {
           method: "PATCH",
           headers: {
