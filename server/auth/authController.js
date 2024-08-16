@@ -43,7 +43,7 @@ const register = async (req, res) => {
     );
     res
       .status(201)
-      .send({ user, token, message: "Account successfully created" });
+      .send({ id: user, token, message: "Account successfully created" });
   } catch (error) {
     console.log(error);
     res.status(500).json({ message: "Internal Register Error" });
