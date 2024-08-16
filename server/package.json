@@ -6,7 +6,8 @@
     "seed:dev": "nodemon ./db/seed.js",
     "seed": "node ./db/seed.js",
     "start": "node server.js",
-    "start:dev": "nodemon server.js"
+    "start:dev": "nodemon server.js",
+    "postinstall": "prisma generate"
   },
   "keywords": [],
   "author": "",
