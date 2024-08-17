@@ -56,7 +56,7 @@ const Account = ({ token }) => {
       if (token) {
         console.log("Hit");
         const response = await fetch(
-          `https://anime-ecomm-database-7caa7cadec94.herokuapp.com${id}`,
+          `https://anime-ecomm-database-7caa7cadec94.herokuapp.com/users/${id}`,
           {
             method: "PATCH",
             headers: {
