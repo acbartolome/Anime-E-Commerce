@@ -29,7 +29,7 @@ const Account = ({ token }) => {
         console.log({ token });
         if (token) {
           const response = await fetch(
-            `https://anime-e-commerce-6b23vf4cd-brad434s-projects.vercel.app/users/${id}`,
+            `https://anime-ecomm-database-7caa7cadec94.herokuapp.com/users/${id}`,
             {
               method: "GET",
               headers: {
@@ -56,7 +56,7 @@ const Account = ({ token }) => {
       if (token) {
         console.log("Hit");
         const response = await fetch(
-          `https://anime-e-commerce-6b23vf4cd-brad434s-projects.vercel.app/${id}`,
+          `https://anime-ecomm-database-7caa7cadec94.herokuapp.com${id}`,
           {
             method: "PATCH",
             headers: {

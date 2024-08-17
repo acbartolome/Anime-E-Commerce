@@ -22,7 +22,7 @@ const Register = ({ setToken, setIsLoggedIn, setId, setAdmin }) => {
 
     try {
       const response = await fetch(
-        "https://anime-e-commerce-6b23vf4cd-brad434s-projects.vercel.app/auth/register",
+        "https://anime-ecomm-database-7caa7cadec94.herokuapp.com/auth/register",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },

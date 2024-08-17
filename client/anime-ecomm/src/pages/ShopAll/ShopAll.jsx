@@ -19,8 +19,8 @@ const ShopAll = ({ cart, setCart }) => {
     const fetchProducts = async () => {
       try {
         const route = category
-          ? `https://anime-e-commerce-6b23vf4cd-brad434s-projects.vercel.app/product/category/${category}`
-          : "https://anime-e-commerce-6b23vf4cd-brad434s-projects.vercel.app/product/";
+          ? `https://anime-ecomm-database-7caa7cadec94.herokuapp.com/product/category/${category}`
+          : "https://anime-ecomm-database-7caa7cadec94.herokuapp.com/product/";
         const response = await fetch(route);
         const data = await response.json();
         setProducts(data);

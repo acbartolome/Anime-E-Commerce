@@ -44,7 +44,7 @@ const AdminPage = (admin, isLoggedIn) => {
       try {
         if (admin) {
           const response = await fetch(
-            "https://anime-e-commerce-6b23vf4cd-brad434s-projects.vercel.app/users/"
+            "https://anime-ecomm-database-7caa7cadec94.herokuapp.com/users/"
           );
           const data = await response.json();
           console.log("USER DATA", data);
@@ -63,7 +63,7 @@ const AdminPage = (admin, isLoggedIn) => {
       try {
         if (admin) {
           const response = await fetch(
-            "https://anime-e-commerce-6b23vf4cd-brad434s-projects.vercel.app/product/"
+            "https://anime-ecomm-database-7caa7cadec94.herokuapp.com/product/"
           );
           const data = await response.json();
           console.log("PRODUCT DATA", data);
@@ -90,7 +90,7 @@ const AdminPage = (admin, isLoggedIn) => {
     try {
       if (admin) {
         const response = await fetch(
-          "https://anime-e-commerce-6b23vf4cd-brad434s-projects.vercel.app/product/",
+          "https://anime-ecomm-database-7caa7cadec94.herokuapp.com/product/",
           {
             method: "POST",
             headers: {
@@ -117,7 +117,7 @@ const AdminPage = (admin, isLoggedIn) => {
         console.log("Hit");
         console.log("ID", id);
         const response = await fetch(
-          `https://anime-e-commerce-6b23vf4cd-brad434s-projects.vercel.app/product/${id}`,
+          `https://anime-ecomm-database-7caa7cadec94.herokuapp.com/product/${id}`,
           {
             method: "PATCH",
             headers: {
@@ -149,7 +149,7 @@ const AdminPage = (admin, isLoggedIn) => {
     try {
       if (admin) {
         const response = await fetch(
-          `https://anime-e-commerce-6b23vf4cd-brad434s-projects.vercel.app/product/${id}`,
+          `https://anime-ecomm-database-7caa7cadec94.herokuapp.com/product/${id}`,
           {
             method: "DELETE",
           }
