@@ -37,9 +37,10 @@ const Register = ({ setToken, setIsLoggedIn, setId, setAdmin }) => {
         console.log("Register data", data);
         localStorage.setItem("token", data.token);
         localStorage.setItem("id", data.id);
-        setAdmin(data.user.admin);
+        localStorage.setItem("admin", data.admin);
         setIsLoggedIn(true);
         console.log("USER?", data.user);
+        console.log("DATA", data);
         console.log("USER ID?", data.user.id);
         console.log("ADMIN", data.user.admin);
         console.log("token!", data.token);
