@@ -51,9 +51,9 @@ const NavBar = ({ setToken, setIsLoggedIn, isLoggedIn, id, admin }) => {
                       <NavDropdown.Item href={`/account/${id}`}>
                         My Account
                       </NavDropdown.Item>
-                      <NavDropdown.Item href="/account/order-history">
+                      {/* <NavDropdown.Item href="/account/order-history">
                         My Orders
-                      </NavDropdown.Item>
+                      </NavDropdown.Item> */}
                       <NavDropdown.Item href="/logout">Logout</NavDropdown.Item>
                       <NavDropdown.Divider />
                       {/* Need to figure out how to add this so it doesn't have a

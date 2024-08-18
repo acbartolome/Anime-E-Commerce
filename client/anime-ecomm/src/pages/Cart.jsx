@@ -1,13 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import "./Cart.css";
 
 const Cart = ({ cart, setCart, isLoggedIn }) => {
-
   const navigate = useNavigate();
 
   useEffect(() => {
-    localStorage.setItem('cart', JSON.stringify(cart));
+    localStorage.setItem("cart", JSON.stringify(cart));
   }, [cart]);
 
   const handleRemoveFromCart = (index) => {
@@ -45,38 +44,39 @@ const Cart = ({ cart, setCart, isLoggedIn }) => {
   //   }
   // };
 
-
   const handleCheckout = () => {
     if (isLoggedIn) {
-      navigate('/checkout');
+      navigate("/checkout");
     } else {
-      alert('Please log in to checkout');
-      navigate('/login');
+      alert("Please log in to checkout");
+      navigate("/auth/login");
     }
   };
 
   return (
-    <div className='cart-container'>
+    <div className="cart-container">
       <h2>My Cart</h2>
       {cart?.length === 0 ? (
         <p>Your cart is empty</p>
       ) : (
         cart.map((item, index) => (
-          <div key={index} className='cart-item'>
-            <h3 className='item-name'>{item.name}</h3>
-            <img className='item-image' src={item.imageUrl} alt={item.name} />
-            <p className='item-description'>{item.description}</p>
-            <p className='item-price'>Price: ${item.price}</p>
-            <button className='remove-button' onClick={() => handleRemoveFromCart(index)}>
+          <div key={index} className="cart-item">
+            <h3 className="item-name">{item.name}</h3>
+            <img className="item-image" src={item.imageUrl} alt={item.name} />
+            <p className="item-description">{item.description}</p>
+            <p className="item-price">Price: ${item.price}</p>
+            <button
+              className="remove-button"
+              onClick={() => handleRemoveFromCart(index)}
+            >
               Remove
             </button>
           </div>
         ))
       )}
-      <button className='checkout-button' onClick={handleCheckout}>
+      <button className="checkout-button" onClick={handleCheckout}>
         Checkout
       </button>
-
     </div>
   );
 };
