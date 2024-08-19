@@ -1,3 +1,5 @@
+// This appears to be the correct code?
+
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Cart.css";
@@ -49,7 +51,7 @@ const Cart = ({ cart, setCart, isLoggedIn }) => {
       navigate("/checkout");
     } else {
       alert("Please log in to checkout");
-      navigate("/auth/login");
+      navigate("/secure/login");
     }
   };
 
