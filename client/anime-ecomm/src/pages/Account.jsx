@@ -8,9 +8,11 @@ import { Button } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 
-const Account = ({ token }) => {
+const Account = (/*{ token }*/) => {
   const [user, setUser] = useState({});
-  const { id } = useParams();
+  // const { id } = useParams();
+  const id = localStorage.getItem("id");
+  const token = localStorage.getItem("token");
 
   // modal to edit info???
   const [show, setShow] = useState(false);
@@ -20,8 +22,6 @@ const Account = ({ token }) => {
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-
-  // const token = localStorage.getItem("token");
 
   useEffect(() => {
     const fetchUserData = async () => {
