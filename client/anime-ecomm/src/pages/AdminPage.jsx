@@ -11,8 +11,6 @@ import Card from "react-bootstrap/Card";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 
-// continue to create the admin page to view all users, create, edit, delete products
-// edit option will be similar to account endit
 const AdminPage = (admin, isLoggedIn) => {
   const [users, setUsers] = useState([]);
   const [products, setProducts] = useState([]);
@@ -24,9 +22,6 @@ const AdminPage = (admin, isLoggedIn) => {
   const [imageUrl, setImageUrl] = useState("");
   const [category, setCategory] = useState("");
   const [stock, setStock] = useState("");
-
-  // test this
-  // const [productId, setProductId] = useState("");
 
   const [show, setShow] = useState({});
   const [showcreate, setShowCreate] = useState(false);
@@ -108,9 +103,6 @@ const AdminPage = (admin, isLoggedIn) => {
   };
 
   // edit products
-  // GETTING ERROR MESSAGE WHEN ATTEMPTING TO EDIT PRODUCT REACHING THE CATCH
-  // not capturing product ID which is why there is an error
-  // Similar to single products make a admin single product to make edits/delete product?
   const handleEditProduct = async (id) => {
     try {
       if (admin) {
@@ -144,7 +136,6 @@ const AdminPage = (admin, isLoggedIn) => {
   };
 
   // delete products
-  // same with edit not capturing the product ID to delete the products
   const handleDeleteProduct = async (id) => {
     try {
       if (admin) {

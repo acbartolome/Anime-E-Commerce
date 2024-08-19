@@ -9,9 +9,9 @@ import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 
 const Account = ({ token }) => {
-  const [user, setUser] = useState([]);
+  const [user, setUser] = useState({});
   const { id } = useParams();
-  // anythign else to add?
+
   // modal to edit info???
   const [show, setShow] = useState(false);
   const [name, setName] = useState("");
