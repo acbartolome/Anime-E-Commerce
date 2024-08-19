@@ -33,16 +33,10 @@ describe("Login Component", () => {
     });
 
     const setIsLoggedIn = jest.fn();
-    const setId = jest.fn();
-    const setAdmin = jest.fn();
 
     render(
       <MemoryRouter>
-        <Login
-          setIsLoggedIn={setIsLoggedIn}
-          setId={setId}
-          setAdmin={setAdmin}
-        />
+        <Login setIsLoggedIn={setIsLoggedIn} />
       </MemoryRouter>
     );
 
@@ -55,23 +49,29 @@ describe("Login Component", () => {
 
     fireEvent.click(screen.getByRole("button", { name: /login/i }));
 
-    await waitFor(() => {
-      expect(fetch).toHaveBeenCalledWith("http://localhost:3000/auth/login/", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          email: "test@example.com",
-          password: "password123",
-        }),
-      });
+    console.log("Before waiting for expectations");
 
-      expect(setId).toHaveBeenCalledWith(mockResponse.id);
-      expect(setAdmin).toHaveBeenCalledWith(mockResponse.admin);
+    await waitFor(() => {
+      console.log("Inside waitFor");
+      expect(fetch).toHaveBeenCalledWith(
+        "https://anime-ecomm-database-7caa7cadec94.herokuapp.com/auth/login",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            email: "test@example.com",
+            password: "password123",
+          }),
+        }
+      );
+
       expect(setIsLoggedIn).toHaveBeenCalledWith(true);
-      expect(mockNavigate).toHaveBeenCalledWith("/");
+      expect(mockNavigate).toHaveBeenCalledWith(`/account/${mockResponse.id}`);
     });
 
     expect(localStorage.getItem("token")).toBe(mockResponse.token);
+    expect(localStorage.getItem("admin")).toBe(mockResponse.admin.toString());
+    expect(localStorage.getItem("id")).toBe(mockResponse.id.toString());
     expect(window.alert).toHaveBeenCalledWith("Successfully Logged in");
   });
 
@@ -86,11 +86,7 @@ describe("Login Component", () => {
 
     render(
       <MemoryRouter>
-        <Login
-          setIsLoggedIn={setIsLoggedIn}
-          setId={setId}
-          setAdmin={setAdmin}
-        />
+        <Login setIsLoggedIn={setIsLoggedIn} />
       </MemoryRouter>
     );
 
@@ -104,17 +100,18 @@ describe("Login Component", () => {
     fireEvent.click(screen.getByRole("button", { name: /login/i }));
 
     await waitFor(() => {
-      expect(fetch).toHaveBeenCalledWith("http://localhost:3000/auth/login/", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          email: "test@example.com",
-          password: "password123",
-        }),
-      });
+      expect(fetch).toHaveBeenCalledWith(
+        "https://anime-ecomm-database-7caa7cadec94.herokuapp.com/auth/login",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            email: "test@example.com",
+            password: "password123",
+          }),
+        }
+      );
 
-      expect(setId).not.toHaveBeenCalled();
-      expect(setAdmin).not.toHaveBeenCalled();
       expect(setIsLoggedIn).not.toHaveBeenCalled();
       expect(mockNavigate).not.toHaveBeenCalled();
     });

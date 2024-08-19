@@ -6,6 +6,14 @@ import { MemoryRouter, Route, Routes } from "react-router-dom";
 // Mock the `fetch` function used in the component
 global.fetch = jest.fn();
 
+// Mock the useParams hook to return a specific id
+jest.mock("react-router-dom", () => ({
+  ...jest.requireActual("react-router-dom"),
+  useParams: () => ({
+    id: "123",
+  }),
+}));
+
 describe("Account Component", () => {
   beforeEach(() => {
     // Reset mocks before each test
@@ -31,7 +39,10 @@ describe("Account Component", () => {
     render(
       <MemoryRouter initialEntries={["/account/123"]}>
         <Routes>
-          <Route path="/account/:id" element={<Account />} />
+          <Route
+            path="/account/:id"
+            element={<Account token="mocked_token" />}
+          />
         </Routes>
       </MemoryRouter>
     );
@@ -42,6 +53,8 @@ describe("Account Component", () => {
       expect(screen.getByText(mockUser.name)).toBeInTheDocument();
       expect(screen.getByText("Email")).toBeInTheDocument();
       expect(screen.getByText(mockUser.email)).toBeInTheDocument();
+      expect(screen.getByText("Password")).toBeInTheDocument();
+      expect(screen.getByText("***********")).toBeInTheDocument();
     });
 
     // Open the modal
