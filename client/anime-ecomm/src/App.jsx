@@ -8,13 +8,11 @@ import AdminPage from "./pages/AdminPage";
 import Cart from "./pages/Cart";
 import Login from "./pages/Login";
 import Logout from "./components/Logout";
-import OrderHistory from "./pages/OrderHistory";
+// import OrderHistory from "./pages/OrderHistory";
 import Register from "./pages/Register";
 import ShopAll from "./pages/ShopAll/ShopAll";
 import SingleProduct from "./pages/SingleProduct/SingleProduct";
-import Checkout from "./components/Checkout";
-
-
+// import Checkout from "./components/Checkout";
 
 function App() {
   const [token, setToken] = useState(localStorage.getItem("token") || null);
@@ -108,10 +106,10 @@ function App() {
               />
             }
           />
-          <Route
+          {/* <Route
             path="/account/order-history"
             element={<OrderHistory token={token} />}
-          />
+          /> */}
           <Route
             path="/cart"
             element={

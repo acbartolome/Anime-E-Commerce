@@ -57,7 +57,6 @@ describe("NavBar Component", () => {
     userEvent.click(screen.getByText("User"));
 
     expect(await screen.findByText("My Account")).toBeInTheDocument();
-    expect(screen.getByText("My Orders")).toBeInTheDocument();
     expect(screen.getByText("Logout")).toBeInTheDocument();
     expect(screen.getByText("Cart")).toBeInTheDocument();
   });

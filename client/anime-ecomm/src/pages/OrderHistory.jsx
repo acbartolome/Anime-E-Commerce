@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
+// ------------------------------- Tier 2 ---------------------------------------
+// will continue to look into this
 
-const OrderHistory = ({ id }) => {
-  const [orders, setOrders] = useState([]);
+// import React, { useEffect, useState } from "react";
 
   useEffect(() => {
     const orderHistory = async () => {
@@ -13,8 +13,21 @@ const OrderHistory = ({ id }) => {
       setOrders(data);
     };
   });
+// const OrderHistory = ({ id }) => {
+//   const [orders, setOrders] = useState([]);
 
-  return <div>ORDER HISTORY PAGE</div>;
-};
+//   useEffect(() => {
+//     const orderHistory = async () => {
+//       const response = await fetch(
+//         `https://anime-ecomm-database-7caa7cadec94.herokuapp.com/orderhistory/${id}`
+//       );
+//       const data = await response.json();
+//       console.log(data);
+//       setOrders(data);
+//     };
+//   });
 
-export default OrderHistory;
+//   return <div>ORDER HISTORY PAGE</div>;
+// };
+
+// export default OrderHistory;

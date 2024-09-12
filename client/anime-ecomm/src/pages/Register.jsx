@@ -22,7 +22,7 @@ const Register = ({ setToken, setIsLoggedIn, setId, setAdmin }) => {
 
     try {
       const response = await fetch(
-        "https://anime-e-commerce-backend.onrender.com/auth/register",
+        "https://anime-ecomm-database-7caa7cadec94.herokuapp.com/auth/register",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -36,10 +36,11 @@ const Register = ({ setToken, setIsLoggedIn, setId, setAdmin }) => {
       } else {
         console.log("Register data", data);
         localStorage.setItem("token", data.token);
-        localStorage.setItem("id", data.id);
-        setAdmin(data.user.admin);
+        localStorage.setItem("id", data.user.id);
+        localStorage.setItem("admin", data.user.admin);
         setIsLoggedIn(true);
         console.log("USER?", data.user);
+        console.log("DATA", data);
         console.log("USER ID?", data.user.id);
         console.log("ADMIN", data.user.admin);
         console.log("token!", data.token);

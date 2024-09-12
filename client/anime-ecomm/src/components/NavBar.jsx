@@ -51,9 +51,9 @@ const NavBar = ({ setToken, setIsLoggedIn, isLoggedIn, id, admin }) => {
                       <NavDropdown.Item href={`/account/${id}`}>
                         My Account
                       </NavDropdown.Item>
-                      <NavDropdown.Item href="/account/order-history">
+                      {/* <NavDropdown.Item href="/account/order-history">
                         My Orders
-                      </NavDropdown.Item>
+                      </NavDropdown.Item> */}
                       <NavDropdown.Item href="/logout">Logout</NavDropdown.Item>
                       <NavDropdown.Divider />
                       {/* Need to figure out how to add this so it doesn't have a
@@ -70,7 +70,7 @@ const NavBar = ({ setToken, setIsLoggedIn, isLoggedIn, id, admin }) => {
                 )}
               </div>
             </Nav>
-            <Form className="d-flex">
+            {/* <Form className="d-flex">
               <Form.Control
                 type="search"
                 placeholder="Search"
@@ -78,7 +78,7 @@ const NavBar = ({ setToken, setIsLoggedIn, isLoggedIn, id, admin }) => {
                 aria-label="Search"
               />
               <Button variant="outline-success">Search</Button>
-            </Form>
+            </Form> */}
           </Navbar.Collapse>
         </Container>
       </Navbar>

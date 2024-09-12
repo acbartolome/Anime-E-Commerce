@@ -19,8 +19,8 @@ const ShopAll = ({ cart, setCart }) => {
     const fetchProducts = async () => {
       try {
         const route = category
-          ? `https://anime-e-commerce-backend.onrender.com/product/category/${category}`
-          : "https://anime-e-commerce-backend.onrender.com/product/";
+          ? `https://anime-ecomm-database-7caa7cadec94.herokuapp.com/product/category/${category}`
+          : "https://anime-ecomm-database-7caa7cadec94.herokuapp.com/product/";
         const response = await fetch(route);
         const data = await response.json();
         setProducts(data);

@@ -8,10 +8,12 @@ import { Button } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 
-const Account = ({ token }) => {
-  const [user, setUser] = useState([]);
-  const { id } = useParams();
-  // anythign else to add?
+const Account = (/*{ token }*/) => {
+  const [user, setUser] = useState({});
+  // const { id } = useParams();
+  const id = localStorage.getItem("id");
+  const token = localStorage.getItem("token");
+
   // modal to edit info???
   const [show, setShow] = useState(false);
   const [name, setName] = useState("");
@@ -21,15 +23,13 @@ const Account = ({ token }) => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  // const token = localStorage.getItem("token");
-
   useEffect(() => {
     const fetchUserData = async () => {
       try {
         console.log({ token });
         if (token) {
           const response = await fetch(
-            `https://anime-e-commerce-backend.onrender.com/users/${id}`,
+            `https://anime-ecomm-database-7caa7cadec94.herokuapp.com/users/${id}`,
             {
               method: "GET",
               headers: {
@@ -56,7 +56,7 @@ const Account = ({ token }) => {
       if (token) {
         console.log("Hit");
         const response = await fetch(
-          `https://anime-e-commerce-backend.onrender.com/${id}`,
+          `https://anime-ecomm-database-7caa7cadec94.herokuapp.com/users/${id}`,
           {
             method: "PATCH",
             headers: {

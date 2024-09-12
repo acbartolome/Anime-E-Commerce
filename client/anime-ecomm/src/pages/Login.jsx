@@ -8,7 +8,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 
-const Login = ({ setIsLoggedIn, setId, setAdmin }) => {
+const Login = ({ setIsLoggedIn }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
@@ -20,7 +20,7 @@ const Login = ({ setIsLoggedIn, setId, setAdmin }) => {
     const loginObject = { email, password };
     try {
       const response = await fetch(
-        "https://anime-e-commerce-backend.onrender.com/auth/login/",
+        "https://anime-ecomm-database-7caa7cadec94.herokuapp.com/auth/login",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },

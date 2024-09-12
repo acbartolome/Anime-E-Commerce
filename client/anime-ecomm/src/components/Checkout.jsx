@@ -14,7 +14,7 @@ const Checkout = ({ cart, setCart, id, token }) => {
   const handleCheckout = async () => {
     try {
       const response = await fetch(
-        "https://anime-e-commerce-backend.onrender.com/account/checkout",
+        "https://anime-ecomm-database-7caa7cadec94.herokuapp.com/account/checkout",
         {
           method: "PATCH",
           headers: {
