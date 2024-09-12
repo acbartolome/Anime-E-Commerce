@@ -3,6 +3,20 @@
 
 // import React, { useEffect, useState } from "react";
 
+
+  useEffect(() => {
+    const fetchOrderHistory = async () => {
+      try {
+        const response = await fetch(
+          `https://anime-e-commerce-backend.onrender.com/order-history/${userId}`
+        );
+        const data = await response.json();
+        setOrderHistory(data.history);
+      } catch (error) {
+        console.error("Error fetching order history:", error);
+      }
+    };
+
 // const OrderHistory = ({ userId }) => {
 //   const [orderHistory, setOrderHistory] = useState([]);
 

@@ -3,6 +3,16 @@
 
 // import React, { useEffect, useState } from "react";
 
+  useEffect(() => {
+    const orderHistory = async () => {
+      const response = await fetch(
+        `https://anime-e-commerce-backend.onrender.com/orderhistory/${id}`
+      );
+      const data = await response.json();
+      console.log(data);
+      setOrders(data);
+    };
+  });
 // const OrderHistory = ({ id }) => {
 //   const [orders, setOrders] = useState([]);
 
